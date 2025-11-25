@@ -5,7 +5,7 @@ interface IconProps {
 }
 
 export default function Icon({ name, className = '', size = 24 }: IconProps) {
-    const icons: Record<string, JSX.Element> = {
+    const icons: Record<string, React.ReactElement> = {
         code: (
             <svg className={className} width={size} height={size} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
