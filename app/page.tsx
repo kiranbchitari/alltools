@@ -27,7 +27,7 @@ export default function Home() {
         {filteredTools.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {filteredTools.map((tool) => (
-              <div key={tool.key}>
+              <div key={tool.key} className="mb-2">
                 <ToolCard
                   title={tool.title}
                   description={tool.description}

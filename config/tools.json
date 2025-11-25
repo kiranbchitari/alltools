@@ -253,20 +253,23 @@
     ]
   },
   "image-compressor": {
-    "enabled": false,
+    "enabled": true,
     "title": "Image Compressor",
-    "description": "Compress images to reduce file size while maintaining quality (coming soon)",
+    "description": "Compress images to reduce file size while maintaining quality. Client-side compression for privacy.",
     "path": "/tools/image-compressor",
     "icon": "compress",
     "keywords": [
       "image compressor",
       "compress images",
       "reduce image size",
-      "image optimization"
+      "image optimization",
+      "compress jpg",
+      "compress png"
     ],
     "example": "",
     "related": [
-      "image-base64"
+      "image-base64",
+      "qr-code-generator"
     ]
   }
 }
