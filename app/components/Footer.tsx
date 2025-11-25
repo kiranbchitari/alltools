@@ -7,7 +7,7 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                     <div className="text-center md:text-left">
                         <p className="text-gray-600 text-sm">
-                            <strong className="text-gray-900">DevTools Hub</strong> - Free online tools for developers
+                            <strong className="text-gray-900">FormatMint</strong> - Free online tools for developers
                         </p>
                         <p className="text-gray-500 text-xs mt-1">
                             Fast, clean, and privacy-friendly. All tools run in your browser.
@@ -23,7 +23,7 @@ export default function Footer() {
                             Home
                         </Link>
                         <a
-                            href="https://github.com/yourusername/devtools-hub"
+                            href="https://github.com/kiranbchitari/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-gray-600 hover:text-blue-600 transition-colors inline-flex items-center gap-1"
@@ -37,8 +37,19 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-4 text-center text-xs text-gray-500">
-                    © {new Date().getFullYear()} DevTools Hub. No registration required • No data collection
+                <div className="mt-8 pt-8 border-t border-gray-100">
+                    <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
+                        <Link href="/about" className="hover:text-blue-600 transition-colors">About</Link>
+                        <Link href="/contact" className="hover:text-blue-600 transition-colors">Contact</Link>
+                        <Link href="/privacy-policy" className="hover:text-blue-600 transition-colors">Privacy Policy</Link>
+                        <Link href="/terms" className="hover:text-blue-600 transition-colors">Terms</Link>
+                        <Link href="/disclaimer" className="hover:text-blue-600 transition-colors">Disclaimer</Link>
+                        <Link href="/cookie-policy" className="hover:text-blue-600 transition-colors">Cookie Policy</Link>
+                        <Link href="/faq" className="hover:text-blue-600 transition-colors">FAQ</Link>
+                    </div>
+                    <div className="mt-4 text-center text-xs text-gray-400">
+                        © {new Date().getFullYear()} FormatMint. No registration required • No data collection
+                    </div>
                 </div>
             </div>
         </footer>

@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://yoursite.com'), // Update with your actual domain
+  metadataBase: new URL('https://formatmint.com'),
 };
 
 export default function RootLayout({

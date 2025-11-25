@@ -1,8 +1,9 @@
+import { MetadataRoute } from 'next';
 import { getEnabledTools } from '@/lib/tools';
 
-export default function sitemap() {
+export default function sitemap(): MetadataRoute.Sitemap {
     const tools = getEnabledTools();
-    const baseUrl = 'https://devtools-hub.com'; // Update with your actual domain
+    const baseUrl = 'https://formatmint.com';
 
     const routes = [
         {

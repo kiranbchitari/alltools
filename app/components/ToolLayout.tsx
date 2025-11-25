@@ -20,7 +20,7 @@ export default function ToolLayout({ children, title, description, toolKey }: To
                             className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
                             aria-label="DevTools Hub - Home"
                         >
-                            DevTools Hub
+                            FormatMint
                         </Link>
                         <Link
                             href="/"

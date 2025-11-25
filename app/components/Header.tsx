@@ -9,7 +9,7 @@ export default function Header() {
                     className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
                     aria-label="DevTools Hub - Home"
                 >
-                    DevTools Hub
+                    FormatMint
                 </Link>
                 <p className="text-gray-600 mt-2 text-sm sm:text-base">
                     Fast, clean and free online tools for developers.
