@@ -33,19 +33,8 @@ export default function Home() {
                   description={tool.description}
                   path={tool.path}
                   icon={tool.icon}
+                  keywords={tool.keywords}
                 />
-                {tool.keywords && tool.keywords.length > 0 && (
-                  <div className="mt-2 flex flex-wrap gap-1">
-                    {tool.keywords.slice(0, 3).map((keyword, idx) => (
-                      <span
-                        key={idx}
-                        className="text-xs px-2 py-1 bg-blue-50 text-blue-700 rounded-full"
-                      >
-                        {keyword}
-                      </span>
-                    ))}
-                  </div>
-                )}
               </div>
             ))}
           </div>
