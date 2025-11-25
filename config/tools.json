@@ -19,6 +19,28 @@
       "markdown-preview"
     ]
   },
+  "ai-text-enhancer": {
+    "enabled": true,
+    "title": "AI Text Enhancer",
+    "description": "Improve and rewrite text using Groq AI models. Proofread, rewrite, and transform your content with AI.",
+    "path": "/tools/ai-text-enhancer",
+    "icon": "sparkles",
+    "keywords": [
+      "ai text",
+      "ai rewrite",
+      "proofread",
+      "groq",
+      "text enhancer",
+      "ai writing",
+      "grammar check",
+      "text transformation"
+    ],
+    "example": "",
+    "related": [
+      "word-tools",
+      "markdown-preview"
+    ]
+  },
   "json-formatter": {
     "enabled": true,
     "title": "JSON Formatter & Validator",
