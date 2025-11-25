@@ -7,6 +7,16 @@ export const metadata: Metadata = {
     title: tool?.title || 'Base64 Encoder',
     description: tool?.description || 'Encode and decode Base64',
     keywords: tool?.keywords?.join(', '),
+    openGraph: {
+        title: tool?.title || 'Base64 Encoder',
+        description: tool?.description || 'Encode and decode Base64',
+        images: ['/og-image.png'],
+    },
+    twitter: {
+        title: tool?.title || 'Base64 Encoder',
+        description: tool?.description || 'Encode and decode Base64',
+        images: ['/og-image.png'],
+    },
 };
 
 export { default } from './page';
