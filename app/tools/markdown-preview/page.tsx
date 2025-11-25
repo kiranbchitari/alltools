@@ -6,7 +6,7 @@ import Button from '@/app/components/Button';
 import Textarea from '@/app/components/Textarea';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { getTool } from '@/lib/tools';
-import { marked } from 'marked';
+
 
 export default function MarkdownPreviewPage() {
     const tool = getTool('markdown-preview');
@@ -16,6 +16,7 @@ export default function MarkdownPreviewPage() {
     useEffect(() => {
         const renderMarkdown = async () => {
             try {
+                const { marked } = await import('marked');
                 const rendered = await marked(markdown);
                 setHtml(rendered);
             } catch (e) {

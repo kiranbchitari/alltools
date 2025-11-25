@@ -1,10 +1,11 @@
-import type { Metadata } from 'next';
+import { generatePageMetadata } from '@/lib/metadata';
 import PageLayout from '../components/PageLayout';
 
-export const metadata: Metadata = {
+export const metadata = generatePageMetadata({
     title: 'Disclaimer - FormatMint',
-    description: 'Disclaimer for FormatMint. Information regarding the use and accuracy of our tools.',
-};
+    description: 'Legal disclaimer regarding the use of FormatMint tools and content.',
+    path: '/disclaimer',
+});
 
 export default function DisclaimerPage() {
     return (

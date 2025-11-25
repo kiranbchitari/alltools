@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import RelatedTools from './RelatedTools';
 import Footer from './Footer';
+import StructuredData, { generateToolSchema, generateBreadcrumbSchema } from './StructuredData';
+import { getTool } from '@/lib/tools';
 
 interface ToolLayoutProps {
     children: React.ReactNode;
@@ -10,8 +12,21 @@ interface ToolLayoutProps {
 }
 
 export default function ToolLayout({ children, title, description, toolKey }: ToolLayoutProps) {
+    const tool = getTool(toolKey);
+    const toolUrl = `https://formatmint.com${tool?.path || ''}`;
+
+    // Generate structured data
+    const toolSchema = generateToolSchema(title, description, toolUrl);
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: 'Home', url: 'https://formatmint.com' },
+        { name: title, url: toolUrl },
+    ]);
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col">
+            <StructuredData data={toolSchema} />
+            <StructuredData data={breadcrumbSchema} />
+
             <header className="bg-white border-b border-gray-200 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">

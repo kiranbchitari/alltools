@@ -4,6 +4,7 @@ import { useState } from 'react';
 import ToolLayout from '@/app/components/ToolLayout';
 import Button from '@/app/components/Button';
 import Textarea from '@/app/components/Textarea';
+import LazyIframe from '@/app/components/LazyIframe';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { getTool } from '@/lib/tools';
 
@@ -68,8 +69,8 @@ export default function HtmlEditorPage() {
                     <button
                         onClick={() => setActiveTab('html')}
                         className={`px-4 sm:px-6 py-3 font-medium text-sm transition-colors whitespace-nowrap ${activeTab === 'html'
-                                ? 'bg-white text-blue-600 border-b-2 border-blue-600'
-                                : 'text-gray-600 hover:text-gray-900'
+                            ? 'bg-white text-blue-600 border-b-2 border-blue-600'
+                            : 'text-gray-600 hover:text-gray-900'
                             }`}
                         aria-label="HTML tab"
                         aria-selected={activeTab === 'html'}
@@ -79,8 +80,8 @@ export default function HtmlEditorPage() {
                     <button
                         onClick={() => setActiveTab('css')}
                         className={`px-4 sm:px-6 py-3 font-medium text-sm transition-colors whitespace-nowrap ${activeTab === 'css'
-                                ? 'bg-white text-blue-600 border-b-2 border-blue-600'
-                                : 'text-gray-600 hover:text-gray-900'
+                            ? 'bg-white text-blue-600 border-b-2 border-blue-600'
+                            : 'text-gray-600 hover:text-gray-900'
                             }`}
                         aria-label="CSS tab"
                         aria-selected={activeTab === 'css'}
@@ -90,8 +91,8 @@ export default function HtmlEditorPage() {
                     <button
                         onClick={() => setActiveTab('js')}
                         className={`px-4 sm:px-6 py-3 font-medium text-sm transition-colors whitespace-nowrap ${activeTab === 'js'
-                                ? 'bg-white text-blue-600 border-b-2 border-blue-600'
-                                : 'text-gray-600 hover:text-gray-900'
+                            ? 'bg-white text-blue-600 border-b-2 border-blue-600'
+                            : 'text-gray-600 hover:text-gray-900'
                             }`}
                         aria-label="JavaScript tab"
                         aria-selected={activeTab === 'js'}
@@ -156,12 +157,11 @@ export default function HtmlEditorPage() {
             <div className="mt-6">
                 <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">Live Preview</h2>
                 <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                    <iframe
+                    <LazyIframe
                         srcDoc={srcDoc}
                         title="Live preview of HTML, CSS, and JavaScript code"
                         sandbox="allow-scripts"
-                        className="w-full h-64 sm:h-96 border-0"
-                        loading="lazy"
+                        className="w-full h-64 sm:h-96"
                     />
                 </div>
             </div>

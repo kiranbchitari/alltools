@@ -1,10 +1,11 @@
-import type { Metadata } from 'next';
+import { generatePageMetadata } from '@/lib/metadata';
 import PageLayout from '../components/PageLayout';
 
-export const metadata: Metadata = {
+export const metadata = generatePageMetadata({
     title: 'Contact Us - FormatMint',
     description: 'Get in touch with the FormatMint team. We welcome feedback, suggestions, and bug reports.',
-};
+    path: '/contact',
+});
 
 export default function ContactPage() {
     return (

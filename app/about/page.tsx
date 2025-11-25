@@ -1,11 +1,12 @@
-import type { Metadata } from 'next';
+import { generatePageMetadata } from '@/lib/metadata';
 import Link from 'next/link';
 import PageLayout from '../components/PageLayout';
 
-export const metadata: Metadata = {
+export const metadata = generatePageMetadata({
     title: 'About Us - FormatMint',
     description: 'Learn about FormatMint, our mission to provide fast, free, and privacy-focused developer tools.',
-};
+    path: '/about',
+});
 
 export default function AboutPage() {
     return (

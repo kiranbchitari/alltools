@@ -1,11 +1,12 @@
-import type { Metadata } from 'next';
+import { generatePageMetadata } from '@/lib/metadata';
 import Link from 'next/link';
 import PageLayout from '../components/PageLayout';
 
-export const metadata: Metadata = {
+export const metadata = generatePageMetadata({
     title: 'Frequently Asked Questions - FormatMint',
-    description: 'Common questions about FormatMint, our tools, and privacy.',
-};
+    description: 'Answers to common questions about FormatMint developer tools.',
+    path: '/faq',
+});
 
 export default function FAQPage() {
     return (

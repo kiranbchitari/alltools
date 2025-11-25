@@ -1,22 +1,5 @@
-import type { Metadata } from 'next';
-import { getTool } from '@/lib/tools';
+﻿import { generateToolMetadata } from '@/lib/metadata';
 
-const tool = getTool('word-tools');
-
-export const metadata: Metadata = {
-    title: tool?.title || 'Word Tools',
-    description: tool?.description || 'Count words and characters',
-    keywords: tool?.keywords?.join(', '),
-    openGraph: {
-        title: tool?.title || 'Word Tools',
-        description: tool?.description || 'Count words and characters',
-        images: ['/og-image.png'],
-    },
-    twitter: {
-        title: tool?.title || 'Word Tools',
-        description: tool?.description || 'Count words and characters',
-        images: ['/og-image.png'],
-    },
-};
+export const metadata = generateToolMetadata('word-tools');
 
 export { default } from './page';

@@ -15,10 +15,16 @@ export default function Home() {
       <Header />
 
       <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
-        <div className="mb-6 sm:mb-8">
-          <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">Available Tools</h2>
-          <p className="text-sm sm:text-base text-gray-600">
-            {filteredTools.length} {filteredTools.length === 1 ? 'tool' : 'tools'} available. All run entirely in your browser.
+        <div className="mb-8 sm:mb-12 text-center">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Free Developer Tools for Web, Code, and Images
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-4">
+            FormatMint provides a suite of fast, free, and privacy-focused tools for developers.
+            Format JSON, edit HTML, convert images, and more—all running locally in your browser.
+          </p>
+          <p className="text-sm sm:text-base text-gray-500">
+            {filteredTools.length} {filteredTools.length === 1 ? 'tool' : 'tools'} available. No server-side processing for most tools.
           </p>
         </div>
 

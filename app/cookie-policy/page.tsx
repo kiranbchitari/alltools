@@ -1,11 +1,12 @@
-import type { Metadata } from 'next';
+import { generatePageMetadata } from '@/lib/metadata';
 import Link from 'next/link';
 import PageLayout from '../components/PageLayout';
 
-export const metadata: Metadata = {
+export const metadata = generatePageMetadata({
     title: 'Cookie Policy - FormatMint',
-    description: 'Cookie Policy for FormatMint. Learn how we use cookies and similar technologies.',
-};
+    description: 'Information about how FormatMint uses cookies.',
+    path: '/cookie-policy',
+});
 
 export default function CookiePolicyPage() {
     return (

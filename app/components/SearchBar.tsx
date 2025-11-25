@@ -17,7 +17,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
 
     return (
         <div className="mb-8">
-            <div className="relative max-w-2xl">
+            <div className="relative max-w-2xl mx-auto">
                 <input
                     type="text"
                     value={query}

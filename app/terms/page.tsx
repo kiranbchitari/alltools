@@ -1,11 +1,12 @@
-import type { Metadata } from 'next';
+import { generatePageMetadata } from '@/lib/metadata';
 import Link from 'next/link';
 import PageLayout from '../components/PageLayout';
 
-export const metadata: Metadata = {
+export const metadata = generatePageMetadata({
     title: 'Terms of Service - FormatMint',
-    description: 'Terms of Service for FormatMint. Please read these terms carefully before using our website.',
-};
+    description: 'The terms and conditions for using FormatMint developer tools.',
+    path: '/terms',
+});
 
 export default function TermsPage() {
     return (

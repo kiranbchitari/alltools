@@ -1,10 +1,11 @@
-import type { Metadata } from 'next';
+import { generatePageMetadata } from '@/lib/metadata';
 import PageLayout from '../components/PageLayout';
 
-export const metadata: Metadata = {
+export const metadata = generatePageMetadata({
     title: 'Privacy Policy - FormatMint',
-    description: 'Privacy Policy for FormatMint. Learn how we handle your data and protect your privacy.',
-};
+    description: 'Our commitment to your privacy. Learn how FormatMint handles your data (spoiler: we mostly don\'t).',
+    path: '/privacy-policy',
+});
 
 export default function PrivacyPolicyPage() {
     return (
