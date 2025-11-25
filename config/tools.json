@@ -1,0 +1,95 @@
+{
+  "html-editor": {
+    "enabled": true,
+    "title": "Simple Online HTML Editor",
+    "description": "Live HTML CSS JS editor with preview. Edit and test code instantly in your browser. No registration required.",
+    "path": "/tools/html-editor",
+    "keywords": [
+      "html editor",
+      "css editor",
+      "javascript editor",
+      "live preview",
+      "code editor",
+      "online html editor"
+    ],
+    "example": "<!DOCTYPE html>\n<html>\n<head>\n  <style>\n    body { font-family: Arial; text-align: center; padding: 50px; }\n    h1 { color: #3b82f6; }\n  </style>\n</head>\n<body>\n  <h1>Hello World!</h1>\n  <p>Edit this HTML to see live changes.</p>\n</body>\n</html>",
+    "related": [
+      "json-formatter",
+      "diff-checker"
+    ]
+  },
+  "json-formatter": {
+    "enabled": true,
+    "title": "JSON Formatter & Validator",
+    "description": "Format, validate, and minify JSON data instantly. Pretty print or compress JSON with error detection. Free online JSON tool.",
+    "path": "/tools/json-formatter",
+    "keywords": [
+      "json formatter",
+      "json validator",
+      "json minify",
+      "json pretty print",
+      "json beautifier",
+      "validate json"
+    ],
+    "example": "{\"name\":\"John Doe\",\"age\":30,\"skills\":[\"JavaScript\",\"React\",\"Node.js\"],\"active\":true}",
+    "related": [
+      "html-editor",
+      "diff-checker"
+    ]
+  },
+  "diff-checker": {
+    "enabled": true,
+    "title": "Text Diff Checker",
+    "description": "Compare two text blocks side by side and find differences instantly. Perfect for code review and document comparison.",
+    "path": "/tools/diff-checker",
+    "keywords": [
+      "diff checker",
+      "text compare",
+      "text difference",
+      "compare text",
+      "diff tool",
+      "text comparison"
+    ],
+    "example": "Original text here\nSecond line\nThird line",
+    "related": [
+      "json-formatter",
+      "word-tools"
+    ]
+  },
+  "word-tools": {
+    "enabled": true,
+    "title": "Word & Text Tools",
+    "description": "Count words and characters, convert text case (uppercase, lowercase, title case), and remove extra spaces instantly.",
+    "path": "/tools/word-tools",
+    "keywords": [
+      "word count",
+      "character count",
+      "text tools",
+      "case converter",
+      "text manipulation",
+      "uppercase",
+      "lowercase"
+    ],
+    "example": "Type or paste your text here to count words, characters, and transform case.",
+    "related": [
+      "diff-checker",
+      "json-formatter"
+    ]
+  },
+  "image-compressor": {
+    "enabled": false,
+    "title": "Image Compressor",
+    "description": "Compress images to reduce file size while maintaining quality (coming soon)",
+    "path": "/tools/image-compressor",
+    "keywords": [
+      "image compressor",
+      "compress images",
+      "reduce image size",
+      "image optimization"
+    ],
+    "example": "",
+    "related": [
+      "html-editor"
+    ]
+  }
+}
