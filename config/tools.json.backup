@@ -268,48 +268,8 @@
     ],
     "example": "",
     "related": [
-      "image-resizer",
-      "image-to-pdf"
-    ]
-  },
-  "image-to-pdf": {
-    "enabled": true,
-    "title": "Image to PDF Converter",
-    "description": "Convert images to PDF format. Combine multiple images into a single PDF document. Client-side conversion.",
-    "path": "/tools/image-to-pdf",
-    "icon": "pdf",
-    "keywords": [
-      "image to pdf",
-      "convert image to pdf",
-      "jpg to pdf",
-      "png to pdf",
-      "pdf converter",
-      "images to pdf"
-    ],
-    "example": "",
-    "related": [
-      "image-compressor",
-      "image-resizer"
-    ]
-  },
-  "image-resizer": {
-    "enabled": true,
-    "title": "Image Resizer",
-    "description": "Resize images to custom dimensions or percentages. Maintain aspect ratio or set custom width and height.",
-    "path": "/tools/image-resizer",
-    "icon": "resize",
-    "keywords": [
-      "image resizer",
-      "resize image",
-      "image dimensions",
-      "scale image",
-      "resize photo",
-      "image size"
-    ],
-    "example": "",
-    "related": [
-      "image-compressor",
-      "image-to-pdf"
+      "image-base64",
+      "qr-code-generator"
     ]
   }
 }
