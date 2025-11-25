@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FormatMint - Free Developer Tools
 
-## Getting Started
+![FormatMint Homepage](https://raw.githubusercontent.com/kiranbchitari/alltools/main/public/og-image.png)
 
-First, run the development server:
+**[FormatMint](https://formatmint.com)** is a collection of free, fast, and privacy-focused developer tools. Most tools run entirely in your browser, ensuring your data never leaves your device.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Privacy First:** Client-side processing for maximum security.
+- **Fast & Lightweight:** Optimized for performance with no server-side latency.
+- **Open Source:** Built with modern web technologies.
+- **No Registration:** Instant access to all tools without sign-ups.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Available Tools
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Code & Text
+- **[Simple Online HTML Editor](https://formatmint.com/tools/html-editor)** - Live HTML CSS JS editor with preview.
+- **[AI Text Enhancer](https://formatmint.com/tools/ai-text-enhancer)** - Improve and rewrite text using AI.
+- **[JSON Formatter & Validator](https://formatmint.com/tools/json-formatter)** - Format, validate, and minify JSON data.
+- **[Text Diff Checker](https://formatmint.com/tools/diff-checker)** - Compare two text blocks side by side.
+- **[Word & Text Tools](https://formatmint.com/tools/word-tools)** - Count words, characters, and convert case.
+- **[Markdown Preview](https://formatmint.com/tools/markdown-preview)** - Write Markdown with live preview.
 
-## Learn More
+### Converters & Encoders
+- **[URL Encoder / Decoder](https://formatmint.com/tools/url-encoder)** - Encode or decode URLs and query strings.
+- **[Base64 Encoder / Decoder](https://formatmint.com/tools/base64-encoder)** - Encode text to Base64 or decode Base64 strings.
+- **[Timestamp Converter](https://formatmint.com/tools/timestamp-converter)** - Convert Unix timestamps to human-readable dates.
+- **[CSV ↔ JSON Converter](https://formatmint.com/tools/csv-json-converter)** - Convert between CSV and JSON formats.
+- **[Image → Base64 Converter](https://formatmint.com/tools/image-base64)** - Convert images to Base64 strings.
 
-To learn more about Next.js, take a look at the following resources:
+### Images & Media
+- **[QR Code Generator](https://formatmint.com/tools/qr-code-generator)** - Generate QR codes from text or URLs.
+- **[Image Compressor](https://formatmint.com/tools/image-compressor)** - Compress images to reduce file size.
+- **[Image to PDF Converter](https://formatmint.com/tools/image-to-pdf)** - Convert images to PDF format.
+- **[Image Resizer](https://formatmint.com/tools/image-resizer)** - Resize images to custom dimensions.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### SEO & Web
+- **[Slug Generator](https://formatmint.com/tools/slug-generator)** - Generate SEO-friendly URL slugs.
+- **[HTML Meta Tag Generator](https://formatmint.com/tools/meta-tag-generator)** - Generate SEO meta tags for your website.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📸 Screenshots
 
-## Deploy on Vercel
+### Homepage
+![FormatMint Homepage](https://formatmint.com/og-image.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### HTML Editor
+![HTML Editor Preview](https://formatmint.com/tools/html-editor/og-image.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔗 Links
+
+- **Live Site:** [https://formatmint.com](https://formatmint.com)
+- **GitHub Repository:** [https://github.com/kiranbchitari/alltools](https://github.com/kiranbchitari/alltools)
+
+---
+
+Built with ❤️ by [FormatMint](https://formatmint.com)
