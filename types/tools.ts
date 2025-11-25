@@ -3,6 +3,7 @@ export interface Tool {
     title: string;
     description: string;
     path: string;
+    icon?: string;
     keywords?: string[];
     example?: string;
     related?: string[];

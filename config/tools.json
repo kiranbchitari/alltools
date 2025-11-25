@@ -4,6 +4,7 @@
     "title": "Simple Online HTML Editor",
     "description": "Live HTML CSS JS editor with preview. Edit and test code instantly in your browser. No registration required.",
     "path": "/tools/html-editor",
+    "icon": "code",
     "keywords": [
       "html editor",
       "css editor",
@@ -15,7 +16,7 @@
     "example": "<!DOCTYPE html>\n<html>\n<head>\n  <style>\n    body { font-family: Arial; text-align: center; padding: 50px; }\n    h1 { color: #3b82f6; }\n  </style>\n</head>\n<body>\n  <h1>Hello World!</h1>\n  <p>Edit this HTML to see live changes.</p>\n</body>\n</html>",
     "related": [
       "json-formatter",
-      "diff-checker"
+      "markdown-preview"
     ]
   },
   "json-formatter": {
@@ -23,6 +24,7 @@
     "title": "JSON Formatter & Validator",
     "description": "Format, validate, and minify JSON data instantly. Pretty print or compress JSON with error detection. Free online JSON tool.",
     "path": "/tools/json-formatter",
+    "icon": "braces",
     "keywords": [
       "json formatter",
       "json validator",
@@ -33,8 +35,8 @@
     ],
     "example": "{\"name\":\"John Doe\",\"age\":30,\"skills\":[\"JavaScript\",\"React\",\"Node.js\"],\"active\":true}",
     "related": [
-      "html-editor",
-      "diff-checker"
+      "csv-json-converter",
+      "base64-encoder"
     ]
   },
   "diff-checker": {
@@ -42,6 +44,7 @@
     "title": "Text Diff Checker",
     "description": "Compare two text blocks side by side and find differences instantly. Perfect for code review and document comparison.",
     "path": "/tools/diff-checker",
+    "icon": "compare",
     "keywords": [
       "diff checker",
       "text compare",
@@ -52,8 +55,8 @@
     ],
     "example": "Original text here\nSecond line\nThird line",
     "related": [
-      "json-formatter",
-      "word-tools"
+      "word-tools",
+      "markdown-preview"
     ]
   },
   "word-tools": {
@@ -61,6 +64,7 @@
     "title": "Word & Text Tools",
     "description": "Count words and characters, convert text case (uppercase, lowercase, title case), and remove extra spaces instantly.",
     "path": "/tools/word-tools",
+    "icon": "text",
     "keywords": [
       "word count",
       "character count",
@@ -72,8 +76,180 @@
     ],
     "example": "Type or paste your text here to count words, characters, and transform case.",
     "related": [
-      "diff-checker",
-      "json-formatter"
+      "slug-generator",
+      "diff-checker"
+    ]
+  },
+  "url-encoder": {
+    "enabled": true,
+    "title": "URL Encoder / Decoder",
+    "description": "Encode or decode URLs and query strings. Convert special characters for safe URL transmission.",
+    "path": "/tools/url-encoder",
+    "icon": "link",
+    "keywords": [
+      "url encoder",
+      "url decoder",
+      "encode url",
+      "decode url",
+      "query string encoder",
+      "percent encoding"
+    ],
+    "example": "https://example.com/search?q=hello world&lang=en",
+    "related": [
+      "base64-encoder",
+      "slug-generator"
+    ]
+  },
+  "base64-encoder": {
+    "enabled": true,
+    "title": "Base64 Encoder / Decoder",
+    "description": "Encode text to Base64 or decode Base64 strings. Perfect for data encoding and API integrations.",
+    "path": "/tools/base64-encoder",
+    "icon": "binary",
+    "keywords": [
+      "base64 encoder",
+      "base64 decoder",
+      "encode base64",
+      "decode base64",
+      "base64 converter"
+    ],
+    "example": "Hello, World!",
+    "related": [
+      "url-encoder",
+      "image-base64"
+    ]
+  },
+  "slug-generator": {
+    "enabled": true,
+    "title": "Slug Generator",
+    "description": "Generate SEO-friendly URL slugs from text. Perfect for blog posts, articles, and web pages.",
+    "path": "/tools/slug-generator",
+    "icon": "hash",
+    "keywords": [
+      "slug generator",
+      "url slug",
+      "seo slug",
+      "permalink generator",
+      "url friendly"
+    ],
+    "example": "How to Create SEO-Friendly URLs in 2024",
+    "related": [
+      "url-encoder",
+      "word-tools"
+    ]
+  },
+  "timestamp-converter": {
+    "enabled": true,
+    "title": "Timestamp Converter",
+    "description": "Convert Unix timestamps to human-readable dates and vice versa. Supports multiple formats and timezones.",
+    "path": "/tools/timestamp-converter",
+    "icon": "clock",
+    "keywords": [
+      "timestamp converter",
+      "unix timestamp",
+      "epoch converter",
+      "date converter",
+      "time converter"
+    ],
+    "example": "1700000000",
+    "related": [
+      "json-formatter",
+      "csv-json-converter"
+    ]
+  },
+  "csv-json-converter": {
+    "enabled": true,
+    "title": "CSV ↔ JSON Converter",
+    "description": "Convert CSV to JSON and JSON to CSV. Perfect for data transformation and API integrations.",
+    "path": "/tools/csv-json-converter",
+    "icon": "table",
+    "keywords": [
+      "csv to json",
+      "json to csv",
+      "csv converter",
+      "json converter",
+      "data converter"
+    ],
+    "example": "name,age,city\nJohn,30,New York\nJane,25,London",
+    "related": [
+      "json-formatter",
+      "timestamp-converter"
+    ]
+  },
+  "markdown-preview": {
+    "enabled": true,
+    "title": "Markdown Preview",
+    "description": "Write Markdown and see live preview. Supports GitHub Flavored Markdown with syntax highlighting.",
+    "path": "/tools/markdown-preview",
+    "icon": "markdown",
+    "keywords": [
+      "markdown preview",
+      "markdown editor",
+      "md preview",
+      "github markdown",
+      "markdown viewer"
+    ],
+    "example": "# Hello Markdown\n\nThis is **bold** and this is *italic*.\n\n- List item 1\n- List item 2\n\n```javascript\nconsole.log('Hello!');\n```",
+    "related": [
+      "html-editor",
+      "diff-checker"
+    ]
+  },
+  "qr-code-generator": {
+    "enabled": true,
+    "title": "QR Code Generator",
+    "description": "Generate QR codes from text or URLs. Download as PNG image. Perfect for sharing links and contact info.",
+    "path": "/tools/qr-code-generator",
+    "icon": "qrcode",
+    "keywords": [
+      "qr code generator",
+      "qr code maker",
+      "generate qr code",
+      "qr code creator",
+      "qr scanner"
+    ],
+    "example": "https://example.com",
+    "related": [
+      "url-encoder",
+      "image-base64"
+    ]
+  },
+  "image-base64": {
+    "enabled": true,
+    "title": "Image → Base64 Converter",
+    "description": "Convert images to Base64 strings. Perfect for embedding images in HTML, CSS, or JSON.",
+    "path": "/tools/image-base64",
+    "icon": "image",
+    "keywords": [
+      "image to base64",
+      "base64 image",
+      "image encoder",
+      "base64 converter",
+      "data uri"
+    ],
+    "example": "",
+    "related": [
+      "base64-encoder",
+      "qr-code-generator"
+    ]
+  },
+  "meta-tag-generator": {
+    "enabled": true,
+    "title": "HTML Meta Tag Generator",
+    "description": "Generate SEO meta tags for your website. Includes Open Graph, Twitter Cards, and standard meta tags.",
+    "path": "/tools/meta-tag-generator",
+    "icon": "tags",
+    "keywords": [
+      "meta tag generator",
+      "seo meta tags",
+      "open graph",
+      "twitter cards",
+      "html meta tags"
+    ],
+    "example": "",
+    "related": [
+      "html-editor",
+      "slug-generator"
     ]
   },
   "image-compressor": {
@@ -81,6 +257,7 @@
     "title": "Image Compressor",
     "description": "Compress images to reduce file size while maintaining quality (coming soon)",
     "path": "/tools/image-compressor",
+    "icon": "compress",
     "keywords": [
       "image compressor",
       "compress images",
@@ -89,7 +266,7 @@
     ],
     "example": "",
     "related": [
-      "html-editor"
+      "image-base64"
     ]
   }
 }

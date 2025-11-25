@@ -1,6 +1,5 @@
 'use client';
 
-import type { Metadata } from 'next';
 import { useState } from 'react';
 import ToolCard from './components/ToolCard';
 import Footer from './components/Footer';
@@ -19,7 +18,7 @@ export default function Home() {
         <div className="mb-6 sm:mb-8">
           <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">Available Tools</h2>
           <p className="text-sm sm:text-base text-gray-600">
-            All tools run entirely in your browser. No data is sent to any server.
+            {filteredTools.length} {filteredTools.length === 1 ? 'tool' : 'tools'} available. All run entirely in your browser.
           </p>
         </div>
 
@@ -33,6 +32,7 @@ export default function Home() {
                   title={tool.title}
                   description={tool.description}
                   path={tool.path}
+                  icon={tool.icon}
                 />
                 {tool.keywords && tool.keywords.length > 0 && (
                   <div className="mt-2 flex flex-wrap gap-1">
