@@ -147,6 +147,7 @@ export default function AITextEnhancer() {
         <ToolLayout
             title="AI Text Enhancer"
             description="Improve and rewrite text using Groq AI models"
+            toolKey="ai-text-enhancer"
         >
             <div className="space-y-6">
                 {/* API Key Section */}
