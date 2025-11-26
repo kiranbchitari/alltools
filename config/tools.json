@@ -62,6 +62,27 @@
       "word-tools"
     ]
   },
+  "responsive-checker": {
+    "enabled": true,
+    "title": "Responsive Design Checker",
+    "description": "Preview how a website looks on mobile, tablet, laptop, Full HD and 4K displays.",
+    "path": "/tools/responsive-checker",
+    "icon": "resize",
+    "keywords": [
+      "responsive checker",
+      "viewport tester",
+      "mobile preview",
+      "device preview",
+      "responsive design",
+      "screen sizes"
+    ],
+    "example": "",
+    "related": [
+      "html-editor",
+      "diff-checker",
+      "ai-regex-generator"
+    ]
+  },
   "json-formatter": {
     "enabled": true,
     "title": "JSON Formatter & Validator",
