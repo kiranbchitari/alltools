@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
     return (
@@ -6,10 +7,19 @@ export default function Header() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
                 <Link
                     href="/"
-                    className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
-                    aria-label="DevTools Hub - Home"
+                    className="flex items-center gap-3 w-fit hover:opacity-80 transition-opacity"
+                    aria-label="FormatMint - Home"
                 >
-                    FormatMint
+                    <Image
+                        src="/logo.jpg"
+                        alt="FormatMint Logo"
+                        width={40}
+                        height={40}
+                        className="rounded-lg shadow-sm"
+                    />
+                    <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        FormatMint
+                    </span>
                 </Link>
                 <p className="text-gray-600 mt-2 text-sm sm:text-base">
                     Fast, clean and free online tools for developers.

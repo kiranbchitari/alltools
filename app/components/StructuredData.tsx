@@ -44,8 +44,8 @@ export function generateOrganizationSchema() {
         '@type': 'Organization',
         name: 'FormatMint',
         url: 'https://formatmint.com',
-        logo: 'https://formatmint.com/og-image.png',
-        description: 'Free, fast, and privacy-focused developer tools. No server-side processing for most tools.',
+        logo: 'https://formatmint.com/logo.jpg',
+        description: 'FormatMint is a collection of free developer tools including HTML Editor, JSON Formatter, AI Text Enhancer, and more. Fast, privacy-focused, and runs locally in your browser.',
         sameAs: [
             'https://github.com/kiranbchitari/',
         ],

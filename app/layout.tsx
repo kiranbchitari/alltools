@@ -19,10 +19,10 @@ export const metadata: Metadata = {
     default: 'FormatMint - Free Developer Tools',
     template: '%s | FormatMint',
   },
-  description: 'Free, fast, and privacy-focused developer tools. No server-side processing for most tools.',
+  description: 'FormatMint is a collection of free developer tools including HTML Editor, JSON Formatter, AI Text Enhancer, and more. Fast, privacy-focused, and runs locally in your browser.',
   openGraph: {
     title: 'FormatMint - Free Developer Tools',
-    description: 'Free, fast, and privacy-focused developer tools. No server-side processing for most tools.',
+    description: 'FormatMint is a collection of free developer tools including HTML Editor, JSON Formatter, AI Text Enhancer, and more. Fast, privacy-focused, and runs locally in your browser.',
     url: 'https://formatmint.com',
     siteName: 'FormatMint',
     images: [
@@ -39,8 +39,13 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'FormatMint - Free Developer Tools',
-    description: 'Free, fast, and privacy-focused developer tools. No server-side processing for most tools.',
+    description: 'FormatMint is a collection of free developer tools including HTML Editor, JSON Formatter, AI Text Enhancer, and more. Fast, privacy-focused, and runs locally in your browser.',
     images: ['/og-image.png'],
+  },
+  icons: {
+    icon: '/logo.jpg',
+    shortcut: '/logo.jpg',
+    apple: '/logo.jpg',
   },
 };
 

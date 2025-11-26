@@ -21,7 +21,7 @@ export default function Home() {
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-4">
             FormatMint provides a suite of fast, free, and privacy-focused tools for developers.
-            Format JSON, edit HTML, convert images, and more—all running locally in your browser.
+            Format JSON, edit HTML, convert images, and more, all running locally in your browser.
           </p>
           <p className="text-sm sm:text-base text-gray-500">
             {filteredTools.length} {filteredTools.length === 1 ? 'tool' : 'tools'} available. No server-side processing for most tools.

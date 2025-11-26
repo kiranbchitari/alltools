@@ -69,7 +69,7 @@ export default function PrivacyPolicyPage() {
 
                     <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Children's Information</h2>
                     <p className="mb-6">
-                        Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity. DevTools Hub does not knowingly collect any Personal Identifiable Information from children under the age of 13.
+                        Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity. FormatMint does not knowingly collect any Personal Identifiable Information from children under the age of 13.
                     </p>
 
                     <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Consent</h2>

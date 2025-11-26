@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import RelatedTools from './RelatedTools';
 import Footer from './Footer';
 import StructuredData, { generateToolSchema, generateBreadcrumbSchema } from './StructuredData';
@@ -32,10 +33,19 @@ export default function ToolLayout({ children, title, description, toolKey }: To
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                         <Link
                             href="/"
-                            className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
-                            aria-label="DevTools Hub - Home"
+                            className="flex items-center gap-2 w-fit hover:opacity-80 transition-opacity"
+                            aria-label="FormatMint - Home"
                         >
-                            FormatMint
+                            <Image
+                                src="/logo.jpg"
+                                alt="FormatMint Logo"
+                                width={32}
+                                height={32}
+                                className="rounded-md shadow-sm"
+                            />
+                            <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                FormatMint
+                            </span>
                         </Link>
                         <Link
                             href="/"
