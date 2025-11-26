@@ -41,6 +41,27 @@
       "markdown-preview"
     ]
   },
+  "ai-regex-generator": {
+    "enabled": true,
+    "title": "AI Regex Generator",
+    "description": "Generate accurate regular expressions from text descriptions using AI. Powered by Groq.",
+    "path": "/tools/ai-regex-generator",
+    "icon": "code",
+    "keywords": [
+      "regex generator",
+      "regex online",
+      "ai regex",
+      "regular expression",
+      "pattern matching",
+      "regex builder"
+    ],
+    "example": "",
+    "related": [
+      "ai-text-enhancer",
+      "diff-checker",
+      "word-tools"
+    ]
+  },
   "json-formatter": {
     "enabled": true,
     "title": "JSON Formatter & Validator",
