@@ -282,7 +282,7 @@ Return ONLY a valid JSON object in this exact format (no markdown, no code block
                                 value={apiKeyInput}
                                 onChange={(e) => setApiKeyInput(e.target.value)}
                                 placeholder="gsk_..."
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                className="w-full px-4 py-2 text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             />
                             <Button onClick={handleSaveApiKey}>
                                 Save API Key
@@ -303,7 +303,7 @@ Return ONLY a valid JSON object in this exact format (no markdown, no code block
                         <select
                             value={selectedModel}
                             onChange={(e) => setSelectedModel(e.target.value)}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-4 py-2 text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             disabled={!apiKey}
                         >
                             {GROQ_MODELS.map((model) => (
@@ -322,7 +322,7 @@ Return ONLY a valid JSON object in this exact format (no markdown, no code block
                         <select
                             value={regexOption}
                             onChange={(e) => setRegexOption(e.target.value as RegexOption)}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-4 py-2 text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             disabled={!apiKey}
                         >
                             <option value="strict">Strict Match</option>

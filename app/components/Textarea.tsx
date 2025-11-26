@@ -17,7 +17,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 )}
                 <textarea
                     ref={ref}
-                    className={`w-full p-3 sm:p-4 font-mono text-sm border rounded-lg 
+                    className={`w-full p-3 sm:p-4 font-mono text-sm text-gray-900 border rounded-lg 
             focus:ring-2 focus:ring-blue-500 focus:border-transparent
             resize-none
             ${error ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'}

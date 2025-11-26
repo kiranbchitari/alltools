@@ -23,7 +23,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
                     value={query}
                     onChange={(e) => handleSearch(e.target.value)}
                     placeholder="Search tools by name or keyword..."
-                    className="w-full px-4 py-3 pl-12 text-base border border-gray-300 rounded-lg 
+                    className="w-full px-4 py-3 pl-12 text-base text-gray-900 border border-gray-300 rounded-lg 
             focus:ring-2 focus:ring-blue-500 focus:border-transparent
             shadow-sm"
                     aria-label="Search tools"
