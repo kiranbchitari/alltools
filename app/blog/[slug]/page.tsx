@@ -98,7 +98,7 @@ export default async function BlogPost({ params }: Props) {
                 </header>
 
                 {/* Featured Image */}
-                <div className="relative w-full h-[400px] mb-12 rounded-xl overflow-hidden shadow-lg">
+                <div className="relative w-full h-[250px] md:h-[400px] mb-12 rounded-xl overflow-hidden shadow-lg">
                     <Image
                         src={`/blog/${slug}/images/${post.thumbnail.split('/').pop()}`}
                         alt={post.title}
@@ -121,7 +121,7 @@ export default async function BlogPost({ params }: Props) {
                                     : src;
 
                                 return (
-                                    <span className="block relative w-full h-[400px] my-8 rounded-lg overflow-hidden">
+                                    <span className="block relative w-full aspect-video my-8 rounded-lg overflow-hidden shadow-md">
                                         <Image
                                             src={imagePath}
                                             alt={(props.alt as string) || ''}
