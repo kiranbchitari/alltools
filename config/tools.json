@@ -375,5 +375,24 @@
       "image-compressor",
       "image-to-pdf"
     ]
+  },
+  "linkedin-text-formatter": {
+    "enabled": true,
+    "title": "LinkedIn Text Formatter",
+    "description": "Format your LinkedIn posts with Bold, Italic, Script, and Monospace text. Free online tool to make your posts stand out.",
+    "path": "/tools/linkedin-text-formatter",
+    "icon": "type",
+    "keywords": [
+      "linkedin text formatter",
+      "linkedin bold text",
+      "linkedin italic generator",
+      "unicode text converter",
+      "social media formatter"
+    ],
+    "example": "Make your LinkedIn posts stand out!",
+    "related": [
+      "word-tools",
+      "ai-text-enhancer"
+    ]
   }
 }
