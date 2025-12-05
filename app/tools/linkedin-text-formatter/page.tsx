@@ -1,8 +1,172 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useCallback } from 'react';
+import Image from 'next/image';
 import ToolLayout from '@/app/components/ToolLayout';
 import { getTool } from '@/lib/tools';
+
+// Unicode character maps for formatting
+const BOLD_MAP: Record<string, string> = {
+    'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘', 'F': '𝗙', 'G': '𝗚', 'H': '𝗛', 'I': '𝗜', 'J': '𝗝', 'K': '𝗞', 'L': '𝗟', 'M': '𝗠', 'N': '𝗡', 'O': '𝗢', 'P': '𝗣', 'Q': '𝗤', 'R': '𝗥', 'S': '𝗦', 'T': '𝗧', 'U': '𝗨', 'V': '𝗩', 'W': '𝗪', 'X': '𝗫', 'Y': '𝗬', 'Z': '𝗭',
+    'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱', 'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵', 'i': '𝗶', 'j': '𝗷', 'k': '𝗸', 'l': '𝗹', 'm': '𝗺', 'n': '𝗻', 'o': '𝗼', 'p': '𝗽', 'q': '𝗾', 'r': '𝗿', 's': '𝘀', 't': '𝘁', 'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝘅', 'y': '𝘆', 'z': '𝘇',
+    '0': '𝟬', '1': '𝟭', '2': '𝟮', '3': '𝟯', '4': '𝟰', '5': '𝟱', '6': '𝟲', '7': '𝟳', '8': '𝟴', '9': '𝟵'
+};
+
+const ITALIC_MAP: Record<string, string> = {
+    'A': '𝘈', 'B': '𝘉', 'C': '𝘊', 'D': '𝘋', 'E': '𝘌', 'F': '𝘍', 'G': '𝘎', 'H': '𝘏', 'I': '𝘐', 'J': '𝘑', 'K': '𝘒', 'L': '𝘓', 'M': '𝘔', 'N': '𝘕', 'O': '𝘖', 'P': '𝘗', 'Q': '𝘘', 'R': '𝘙', 'S': '𝘚', 'T': '𝘛', 'U': '𝘜', 'V': '𝘝', 'W': '𝘞', 'X': '𝘟', 'Y': '𝘠', 'Z': '𝘡',
+    'a': '𝘢', 'b': '𝘣', 'c': '𝘤', 'd': '𝘥', 'e': '𝘦', 'f': '𝘧', 'g': '𝘨', 'h': '𝘩', 'i': '𝘪', 'j': '𝘫', 'k': '𝘬', 'l': '𝘭', 'm': '𝘮', 'n': '𝘯', 'o': '𝘰', 'p': '𝘱', 'q': '𝘲', 'r': '𝘳', 's': '𝘴', 't': '𝘵', 'u': '𝘶', 'v': '𝘷', 'w': '𝘸', 'x': '𝘹', 'y': '𝘺', 'z': '𝘻'
+};
+
+const BOLD_ITALIC_MAP: Record<string, string> = {
+    'A': '𝘼', 'B': '𝘽', 'C': '𝘾', 'D': '𝘿', 'E': '𝙀', 'F': '𝙁', 'G': '𝙂', 'H': '𝙃', 'I': '𝙄', 'J': '𝙅', 'K': '𝙆', 'L': '𝙇', 'M': '𝙈', 'N': '𝙉', 'O': '𝙊', 'P': '𝙋', 'Q': '𝙌', 'R': '𝙍', 'S': '𝙎', 'T': '𝙏', 'U': '𝙐', 'V': '𝙑', 'W': '𝙒', 'X': '𝙓', 'Y': '𝙔', 'Z': '𝙕',
+    'a': '𝙖', 'b': '𝙗', 'c': '𝙘', 'd': '𝙙', 'e': '𝙚', 'f': '𝙛', 'g': '𝙜', 'h': '𝙝', 'i': '𝙞', 'j': '𝙟', 'k': '𝙠', 'l': '𝙡', 'm': '𝙢', 'n': '𝙣', 'o': '𝙤', 'p': '𝙥', 'q': '𝙦', 'r': '𝙧', 's': '𝙨', 't': '𝙩', 'u': '𝙪', 'v': '𝙫', 'w': '𝙬', 'x': '𝙭', 'y': '𝙮', 'z': '𝙯'
+};
+
+// Popular emojis for quick access
+const POPULAR_EMOJIS = [
+    '👍', '❤️', '🔥', '💡', '✨', '🎯', '🚀', '💪',
+    '👏', '🙌', '💯', '⭐', '✅', '📈', '🎉', '💼',
+    '🤝', '💬', '📢', '🌟', '🏆', '📌', '💎', '🔑',
+    '😊', '🤔', '👀', '🙏', '📊', '🎓', '💻', '🌍'
+];
+
+// Bullet and list symbols
+const BULLET_SYMBOLS = ['•', '◦', '▪', '▸', '→', '★', '✓', '✦'];
+const NUMBER_SYMBOLS = ['①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨', '⑩'];
+
+// LinkedIn "See More" cutoff (characters shown before truncation)
+const LINKEDIN_MOBILE_CUTOFF = 140;
+const LINKEDIN_DESKTOP_CUTOFF = 210;
+const LINKEDIN_MAX_CHARS = 3000;
+
+// Special symbols and decorative elements (unique feature!)
+const SPECIAL_SYMBOLS = {
+    dividers: ['━━━━━━━━━━', '▬▬▬▬▬▬▬▬▬▬', '═══════════', '┈┈┈┈┈┈┈┈┈┈', '╌╌╌╌╌╌╌╌╌╌', '◆◆◆◆◆◆◆', '◇◇◇◇◇◇◇', '⬥⬥⬥⬥⬥⬥⬥'],
+    arrows: ['➡️', '⬅️', '⬆️', '⬇️', '↗️', '↘️', '➤', '►', '◀', '▶', '⇒', '⇐', '⇑', '⇓', '↔', '↕'],
+    checkmarks: ['✓', '✔', '☑', '✅', '☐', '☒', '⬜', '⬛', '🔲', '🔳'],
+    stars: ['★', '☆', '✪', '✫', '✯', '⭐', '🌟', '💫', '✨', '⚡'],
+    pointers: ['👉', '👈', '👆', '👇', '☝️', '✋', '🤚', '🖐️', '✌️', '🤞'],
+    brackets: ['【', '】', '『', '』', '「', '」', '〔', '〕', '《', '》', '〈', '〉'],
+    hearts: ['❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '💔', '❣️', '💕', '💖'],
+};
+
+// Post templates (unique feature!)
+const POST_TEMPLATES = [
+    {
+        name: '🎯 Hook + Story',
+        template: `[Attention-grabbing statement or question]
+
+Here's what happened...
+
+[Your story in 2-3 short paragraphs]
+
+The lesson?
+
+[Key takeaway]
+
+—
+
+What's your experience with [topic]?
+
+#YourHashtag`
+    },
+    {
+        name: '💡 Quick Tip',
+        template: `Quick tip for [your audience]:
+
+[Your tip in one sentence]
+
+Here's why it works:
+
+→ [Benefit 1]
+→ [Benefit 2]
+→ [Benefit 3]
+
+Try it today. Thank me later.
+
+♻️ Repost if this helps someone!
+
+#YourHashtag`
+    },
+    {
+        name: '📋 Listicle',
+        template: `[Number] [things/tips/lessons] that [benefit]:
+
+1️⃣ [Point one]
+
+2️⃣ [Point two]
+
+3️⃣ [Point three]
+
+4️⃣ [Point four]
+
+5️⃣ [Point five]
+
+Which one resonates most with you?
+
+#YourHashtag`
+    },
+    {
+        name: '🔥 Hot Take',
+        template: `Unpopular opinion:
+
+[Your controversial take]
+
+Here's why I believe this:
+
+[Your reasoning]
+
+[Supporting example]
+
+Agree or disagree?
+
+Drop a 🔥 if you're with me.
+
+#YourHashtag`
+    },
+    {
+        name: '📢 Announcement',
+        template: `🚀 Big news!
+
+[Your announcement]
+
+Here's what this means:
+
+✅ [Benefit 1]
+✅ [Benefit 2]
+✅ [Benefit 3]
+
+I'm incredibly grateful for [acknowledgment]
+
+[Call to action]
+
+#YourHashtag`
+    },
+    {
+        name: '❓ Question Post',
+        template: `I'm curious...
+
+[Your question to the audience]
+
+I'll go first:
+
+[Your answer]
+
+Now your turn 👇
+
+#YourHashtag`
+    },
+];
+
+// Hashtag categories (unique feature!)
+const HASHTAG_CATEGORIES = {
+    'Career': ['#CareerAdvice', '#JobSearch', '#Hiring', '#Resume', '#Interview', '#CareerGrowth', '#ProfessionalDevelopment'],
+    'Tech': ['#Technology', '#AI', '#MachineLearning', '#WebDevelopment', '#Programming', '#Coding', '#Tech', '#Innovation'],
+    'Business': ['#Entrepreneurship', '#Startup', '#Business', '#Leadership', '#Management', '#Strategy', '#Growth'],
+    'Marketing': ['#Marketing', '#DigitalMarketing', '#ContentMarketing', '#SocialMedia', '#Branding', '#SEO', '#Copywriting'],
+    'Productivity': ['#Productivity', '#TimeManagement', '#WorkLifeBalance', '#RemoteWork', '#WFH', '#Motivation', '#Success'],
+    'Personal': ['#PersonalBranding', '#Networking', '#Inspiration', '#Mindset', '#Learning', '#Growth', '#Life'],
+};
 
 const STYLES = {
     boldSerif: {
@@ -65,6 +229,244 @@ export default function LinkedInTextFormatter() {
     const [input, setInput] = useState('');
     const [copied, setCopied] = useState<string | null>(null);
     const [viewMode, setViewMode] = useState<'desktop' | 'mobile'>('desktop');
+    const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+    const [showBulletPicker, setShowBulletPicker] = useState(false);
+    const [showNumberPicker, setShowNumberPicker] = useState(false);
+    const [undoStack, setUndoStack] = useState<string[]>([]);
+    const [redoStack, setRedoStack] = useState<string[]>([]);
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+    // New unique feature states
+    const [showTemplates, setShowTemplates] = useState(false);
+    const [showSymbols, setShowSymbols] = useState(false);
+    const [showHashtags, setShowHashtags] = useState(false);
+    const [activeSymbolCategory, setActiveSymbolCategory] = useState<keyof typeof SPECIAL_SYMBOLS>('dividers');
+    const [activeHashtagCategory, setActiveHashtagCategory] = useState<keyof typeof HASHTAG_CATEGORIES>('Career');
+
+    // Calculate post analytics
+    const wordCount = input.trim() ? input.trim().split(/\s+/).length : 0;
+    const charCount = input.length;
+    const readingTime = Math.ceil(wordCount / 200); // avg 200 wpm
+    const isOverLimit = charCount > LINKEDIN_MAX_CHARS;
+    const hookText = input.substring(0, LINKEDIN_MOBILE_CUTOFF);
+    const hasGoodHook = hookText.includes('?') || hookText.includes('!') || /\d/.test(hookText);
+
+    // Close all dropdowns
+    const closeAllDropdowns = useCallback(() => {
+        setShowEmojiPicker(false);
+        setShowBulletPicker(false);
+        setShowNumberPicker(false);
+        setShowTemplates(false);
+        setShowSymbols(false);
+        setShowHashtags(false);
+    }, []);
+
+    // Save to undo stack before making changes
+    const saveToUndo = useCallback(() => {
+        setUndoStack(prev => [...prev.slice(-20), input]);
+        setRedoStack([]);
+    }, [input]);
+
+    // Apply character map transformation to selected text
+    const applyFormatToSelection = useCallback((charMap: Record<string, string>) => {
+        const textarea = textareaRef.current;
+        if (!textarea) return;
+
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+
+        if (start === end) {
+            // No selection - show hint
+            return;
+        }
+
+        saveToUndo();
+
+        const selectedText = input.substring(start, end);
+        const transformedText = selectedText.split('').map(char => charMap[char] || char).join('');
+        const newText = input.substring(0, start) + transformedText + input.substring(end);
+
+        setInput(newText);
+
+        // Restore cursor position
+        setTimeout(() => {
+            textarea.focus();
+            textarea.setSelectionRange(start, start + transformedText.length);
+        }, 0);
+    }, [input, saveToUndo]);
+
+    // Apply underline using combining character
+    const applyUnderline = useCallback(() => {
+        const textarea = textareaRef.current;
+        if (!textarea) return;
+
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+
+        if (start === end) return;
+
+        saveToUndo();
+
+        const selectedText = input.substring(start, end);
+        // Add combining underline character after each character (skip whitespace/newlines)
+        const transformedText = Array.from(selectedText).map(char => {
+            if (char === ' ' || char === '\n' || char === '\r' || char === '\t') return char;
+            return char + '\u0332';
+        }).join('');
+        const newText = input.substring(0, start) + transformedText + input.substring(end);
+
+        setInput(newText);
+
+        setTimeout(() => {
+            textarea.focus();
+            textarea.setSelectionRange(start, start + transformedText.length);
+        }, 0);
+    }, [input, saveToUndo]);
+
+    // Apply strikethrough using combining character
+    const applyStrikethrough = useCallback(() => {
+        const textarea = textareaRef.current;
+        if (!textarea) return;
+
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+
+        if (start === end) return;
+
+        saveToUndo();
+
+        const selectedText = input.substring(start, end);
+        // Add combining strikethrough character after each character (skip whitespace/newlines)
+        const transformedText = Array.from(selectedText).map(char => {
+            if (char === ' ' || char === '\n' || char === '\r' || char === '\t') return char;
+            return char + '\u0336';
+        }).join('');
+        const newText = input.substring(0, start) + transformedText + input.substring(end);
+
+        setInput(newText);
+
+        setTimeout(() => {
+            textarea.focus();
+            textarea.setSelectionRange(start, start + transformedText.length);
+        }, 0);
+    }, [input, saveToUndo]);
+
+    // Insert text at cursor position
+    const insertAtCursor = useCallback((text: string) => {
+        const textarea = textareaRef.current;
+        if (!textarea) return;
+
+        saveToUndo();
+
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const newText = input.substring(0, start) + text + input.substring(end);
+
+        setInput(newText);
+
+        setTimeout(() => {
+            textarea.focus();
+            textarea.setSelectionRange(start + text.length, start + text.length);
+        }, 0);
+    }, [input, saveToUndo]);
+
+    // Handle bullet list insertion
+    const insertBulletList = useCallback((bullet: string) => {
+        const textarea = textareaRef.current;
+        if (!textarea) return;
+
+        saveToUndo();
+
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const selectedText = input.substring(start, end);
+
+        let newText: string;
+        if (selectedText.includes('\n')) {
+            // Multiple lines - add bullet to each
+            const lines = selectedText.split('\n');
+            const bulletedLines = lines.map(line => line.trim() ? `${bullet} ${line.trim()}` : '').join('\n');
+            newText = input.substring(0, start) + bulletedLines + input.substring(end);
+        } else if (selectedText) {
+            // Single line selected
+            newText = input.substring(0, start) + `${bullet} ${selectedText}` + input.substring(end);
+        } else {
+            // No selection - just insert bullet
+            newText = input.substring(0, start) + `${bullet} ` + input.substring(end);
+        }
+
+        setInput(newText);
+        setShowBulletPicker(false);
+
+        setTimeout(() => {
+            textarea.focus();
+        }, 0);
+    }, [input, saveToUndo]);
+
+    // Handle numbered list insertion
+    const insertNumberedList = useCallback(() => {
+        const textarea = textareaRef.current;
+        if (!textarea) return;
+
+        saveToUndo();
+
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const selectedText = input.substring(start, end);
+
+        let newText: string;
+        if (selectedText.includes('\n')) {
+            // Multiple lines - add numbers to each
+            const lines = selectedText.split('\n');
+            const numberedLines = lines.map((line, i) => {
+                if (!line.trim()) return '';
+                const num = NUMBER_SYMBOLS[i] || `${i + 1}.`;
+                return `${num} ${line.trim()}`;
+            }).join('\n');
+            newText = input.substring(0, start) + numberedLines + input.substring(end);
+        } else if (selectedText) {
+            // Single line selected
+            newText = input.substring(0, start) + `① ${selectedText}` + input.substring(end);
+        } else {
+            // No selection - just insert first number
+            newText = input.substring(0, start) + `① ` + input.substring(end);
+        }
+
+        setInput(newText);
+        setShowNumberPicker(false);
+
+        setTimeout(() => {
+            textarea.focus();
+        }, 0);
+    }, [input, saveToUndo]);
+
+    // Undo
+    const handleUndo = useCallback(() => {
+        if (undoStack.length === 0) return;
+
+        setRedoStack(prev => [...prev, input]);
+        const previousState = undoStack[undoStack.length - 1];
+        setUndoStack(prev => prev.slice(0, -1));
+        setInput(previousState);
+    }, [input, undoStack]);
+
+    // Redo
+    const handleRedo = useCallback(() => {
+        if (redoStack.length === 0) return;
+
+        setUndoStack(prev => [...prev, input]);
+        const nextState = redoStack[redoStack.length - 1];
+        setRedoStack(prev => prev.slice(0, -1));
+        setInput(nextState);
+    }, [input, redoStack]);
+
+    // Clear all formatting (reset to plain text)
+    const clearFormatting = useCallback(() => {
+        saveToUndo();
+        // This removes Unicode formatting by normalizing to ASCII where possible
+        // For a complete clear, we'd need to reverse all mappings
+        setInput(input);
+    }, [input, saveToUndo]);
 
     const transformText = (text: string, styleKey: keyof typeof STYLES) => {
         const map = STYLES[styleKey].map;
@@ -74,6 +476,12 @@ export default function LinkedInTextFormatter() {
     const handleCopy = (text: string, styleKey: string) => {
         navigator.clipboard.writeText(text);
         setCopied(styleKey);
+        setTimeout(() => setCopied(null), 2000);
+    };
+
+    const handleCopyMain = () => {
+        navigator.clipboard.writeText(input);
+        setCopied('main');
         setTimeout(() => setCopied(null), 2000);
     };
 
@@ -89,25 +497,401 @@ export default function LinkedInTextFormatter() {
         >
             {/* Input and Preview Section */}
             <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-2 mb-8">
-                {/* Input */}
-                <div className="bg-white rounded-lg shadow-md p-3 sm:p-4">
+                {/* Input with Toolbar */}
+                <div className="bg-white rounded-lg shadow-md p-3 sm:p-4 flex flex-col">
                     <label htmlFor="input" className="block text-sm font-semibold text-gray-700 mb-3">
                         Enter your text
                     </label>
+
+                    {/* Formatting Toolbar */}
+                    <div className="flex flex-wrap items-center gap-1 p-2 bg-gray-50 border border-gray-200 rounded-t-lg border-b-0">
+                        {/* Bold */}
+                        <button
+                            onClick={() => applyFormatToSelection(BOLD_MAP)}
+                            className="p-2 hover:bg-gray-200 rounded font-bold text-gray-700 transition-colors"
+                            title="Bold (select text first)"
+                            aria-label="Bold"
+                        >
+                            B
+                        </button>
+
+                        {/* Italic */}
+                        <button
+                            onClick={() => applyFormatToSelection(ITALIC_MAP)}
+                            className="p-2 hover:bg-gray-200 rounded italic text-gray-700 transition-colors"
+                            title="Italic (select text first)"
+                            aria-label="Italic"
+                        >
+                            I
+                        </button>
+
+                        {/* Underline */}
+                        <button
+                            onClick={applyUnderline}
+                            className="p-2 hover:bg-gray-200 rounded underline text-gray-700 transition-colors"
+                            title="Underline (select text first)"
+                            aria-label="Underline"
+                        >
+                            U
+                        </button>
+
+                        {/* Strikethrough */}
+                        <button
+                            onClick={applyStrikethrough}
+                            className="p-2 hover:bg-gray-200 rounded line-through text-gray-700 transition-colors"
+                            title="Strikethrough (select text first)"
+                            aria-label="Strikethrough"
+                        >
+                            S
+                        </button>
+
+                        <div className="w-px h-6 bg-gray-300 mx-1" />
+
+                        {/* Emoji Picker */}
+                        <div className="relative">
+                            <button
+                                onClick={() => {
+                                    setShowEmojiPicker(!showEmojiPicker);
+                                    setShowBulletPicker(false);
+                                    setShowNumberPicker(false);
+                                }}
+                                className="p-2 hover:bg-gray-200 rounded text-gray-700 transition-colors"
+                                title="Insert Emoji"
+                                aria-label="Insert Emoji"
+                            >
+                                😊
+                            </button>
+                            {showEmojiPicker && (
+                                <div className="absolute top-full left-0 mt-1 p-2 bg-white border border-gray-200 rounded-lg shadow-lg z-10 w-64">
+                                    <div className="grid grid-cols-8 gap-1">
+                                        {POPULAR_EMOJIS.map((emoji, i) => (
+                                            <button
+                                                key={i}
+                                                onClick={() => {
+                                                    insertAtCursor(emoji);
+                                                    setShowEmojiPicker(false);
+                                                }}
+                                                className="p-1 hover:bg-gray-100 rounded text-lg"
+                                            >
+                                                {emoji}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="w-px h-6 bg-gray-300 mx-1" />
+
+                        {/* Undo */}
+                        <button
+                            onClick={handleUndo}
+                            disabled={undoStack.length === 0}
+                            className="p-2 hover:bg-gray-200 rounded text-gray-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                            title="Undo"
+                            aria-label="Undo"
+                        >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+                            </svg>
+                        </button>
+
+                        {/* Redo */}
+                        <button
+                            onClick={handleRedo}
+                            disabled={redoStack.length === 0}
+                            className="p-2 hover:bg-gray-200 rounded text-gray-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                            title="Redo"
+                            aria-label="Redo"
+                        >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10h-10a8 8 0 00-8 8v2M21 10l-6 6m6-6l-6-6" />
+                            </svg>
+                        </button>
+
+                        <div className="w-px h-6 bg-gray-300 mx-1" />
+
+                        {/* Clear */}
+                        <button
+                            onClick={() => { saveToUndo(); setInput(''); }}
+                            className="p-2 hover:bg-gray-200 rounded text-gray-700 transition-colors"
+                            title="Clear All"
+                            aria-label="Clear All"
+                        >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+
+                        <div className="w-px h-6 bg-gray-300 mx-1" />
+
+                        {/* Bullet List */}
+                        <div className="relative">
+                            <button
+                                onClick={() => {
+                                    setShowBulletPicker(!showBulletPicker);
+                                    setShowEmojiPicker(false);
+                                    setShowNumberPicker(false);
+                                }}
+                                className="p-2 hover:bg-gray-200 rounded text-gray-700 transition-colors"
+                                title="Bullet List"
+                                aria-label="Bullet List"
+                            >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                                </svg>
+                            </button>
+                            {showBulletPicker && (
+                                <div className="absolute top-full left-0 mt-1 p-2 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                                    <div className="flex gap-1">
+                                        {BULLET_SYMBOLS.map((bullet, i) => (
+                                            <button
+                                                key={i}
+                                                onClick={() => insertBulletList(bullet)}
+                                                className="p-2 hover:bg-gray-100 rounded text-lg"
+                                            >
+                                                {bullet}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Numbered List */}
+                        <button
+                            onClick={insertNumberedList}
+                            className="p-2 hover:bg-gray-200 rounded text-gray-700 transition-colors"
+                            title="Numbered List"
+                            aria-label="Numbered List"
+                        >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20h14M7 12h14M7 4h14M3 20h.01M3 12h.01M3 4h.01" />
+                            </svg>
+                        </button>
+
+                        {/* Line Spacing (UNIQUE!) - moved inline with lists */}
+                        <button
+                            onClick={() => {
+                                saveToUndo();
+                                // Add double line breaks for readability
+                                const spaced = input.replace(/\n(?!\n)/g, '\n\n');
+                                setInput(spaced);
+                            }}
+                            className="p-2 hover:bg-orange-100 rounded text-orange-600 transition-colors"
+                            title="Add Line Spacing (readability)"
+                            aria-label="Line Spacing"
+                        >
+                            ↕️
+                        </button>
+
+                        <div className="w-px h-6 bg-gray-300 mx-1" />
+
+                        {/* Templates (UNIQUE!) */}
+                        <div className="relative">
+                            <button
+                                onClick={() => {
+                                    setShowTemplates(!showTemplates);
+                                    setShowSymbols(false);
+                                    setShowHashtags(false);
+                                    setShowEmojiPicker(false);
+                                    setShowBulletPicker(false);
+                                }}
+                                className="p-2 hover:bg-blue-100 rounded text-blue-600 transition-colors"
+                                title="Post Templates"
+                                aria-label="Post Templates"
+                            >
+                                📝
+                            </button>
+                            {showTemplates && (
+                                <div className="absolute top-full right-0 mt-1 p-2 bg-white border border-gray-200 rounded-lg shadow-lg z-20 w-64 max-h-80 overflow-y-auto">
+                                    <div className="text-xs font-semibold text-gray-500 mb-2">POST TEMPLATES</div>
+                                    {POST_TEMPLATES.map((template, i) => (
+                                        <button
+                                            key={i}
+                                            onClick={() => {
+                                                saveToUndo();
+                                                setInput(template.template);
+                                                setShowTemplates(false);
+                                            }}
+                                            className="w-full text-left p-2 hover:bg-gray-100 rounded text-sm mb-1"
+                                        >
+                                            {template.name}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Special Symbols (UNIQUE!) */}
+                        <div className="relative">
+                            <button
+                                onClick={() => {
+                                    setShowSymbols(!showSymbols);
+                                    setShowTemplates(false);
+                                    setShowHashtags(false);
+                                    setShowEmojiPicker(false);
+                                    setShowBulletPicker(false);
+                                }}
+                                className="p-2 hover:bg-purple-100 rounded text-purple-600 transition-colors"
+                                title="Special Symbols & Dividers"
+                                aria-label="Special Symbols"
+                            >
+                                ✦
+                            </button>
+                            {showSymbols && (
+                                <div className="absolute top-full right-0 mt-1 p-3 bg-white border border-gray-200 rounded-lg shadow-lg z-20 w-72">
+                                    <div className="text-xs font-semibold text-gray-500 mb-2">SPECIAL SYMBOLS</div>
+                                    <div className="flex flex-wrap gap-1 mb-3">
+                                        {(Object.keys(SPECIAL_SYMBOLS) as Array<keyof typeof SPECIAL_SYMBOLS>).map((cat) => (
+                                            <button
+                                                key={cat}
+                                                onClick={() => setActiveSymbolCategory(cat)}
+                                                className={`px-2 py-1 text-xs rounded ${activeSymbolCategory === cat ? 'bg-purple-100 text-purple-700' : 'bg-gray-100'}`}
+                                            >
+                                                {cat}
+                                            </button>
+                                        ))}
+                                    </div>
+                                    <div className="flex flex-wrap gap-1">
+                                        {SPECIAL_SYMBOLS[activeSymbolCategory].map((symbol, i) => (
+                                            <button
+                                                key={i}
+                                                onClick={() => {
+                                                    insertAtCursor(symbol);
+                                                    setShowSymbols(false);
+                                                }}
+                                                className="p-2 hover:bg-gray-100 rounded text-lg min-w-[40px]"
+                                                title={`Insert: ${symbol}`}
+                                            >
+                                                {symbol}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Hashtags (UNIQUE!) */}
+                        <div className="relative">
+                            <button
+                                onClick={() => {
+                                    setShowHashtags(!showHashtags);
+                                    setShowTemplates(false);
+                                    setShowSymbols(false);
+                                    setShowEmojiPicker(false);
+                                    setShowBulletPicker(false);
+                                }}
+                                className="p-2 hover:bg-green-100 rounded text-green-600 transition-colors"
+                                title="Popular Hashtags"
+                                aria-label="Hashtags"
+                            >
+                                #
+                            </button>
+                            {showHashtags && (
+                                <div className="absolute top-full left-0 mt-1 p-3 bg-white border border-gray-200 rounded-lg shadow-lg z-20 w-80 max-h-80 overflow-y-auto -translate-x-1/2">
+                                    <div className="text-xs font-semibold text-gray-500 mb-2">POPULAR HASHTAGS</div>
+                                    <div className="flex flex-wrap gap-1 mb-3">
+                                        {(Object.keys(HASHTAG_CATEGORIES) as Array<keyof typeof HASHTAG_CATEGORIES>).map((cat) => (
+                                            <button
+                                                key={cat}
+                                                onClick={() => setActiveHashtagCategory(cat)}
+                                                className={`px-2 py-1 text-xs rounded ${activeHashtagCategory === cat ? 'bg-green-100 text-green-700' : 'bg-gray-100'}`}
+                                            >
+                                                {cat}
+                                            </button>
+                                        ))}
+                                    </div>
+                                    <div className="flex flex-wrap gap-1">
+                                        {HASHTAG_CATEGORIES[activeHashtagCategory].map((tag, i) => (
+                                            <button
+                                                key={i}
+                                                onClick={() => {
+                                                    insertAtCursor(tag + ' ');
+                                                    setShowHashtags(false);
+                                                }}
+                                                className="px-2 py-1 hover:bg-gray-100 rounded text-sm text-green-700 bg-green-50"
+                                            >
+                                                {tag}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
                     <textarea
+                        ref={textareaRef}
                         id="input"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
-                        placeholder="Type something amazing..."
-                        className="w-full h-64 sm:h-80 p-4 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-base"
+                        placeholder="Type something amazing... Select text and use the toolbar above to format it!"
+                        className="w-full flex-1 min-h-[280px] p-4 border-2 border-gray-300 rounded-b-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-base border-t-0"
+                        onClick={() => {
+                            setShowEmojiPicker(false);
+                            setShowBulletPicker(false);
+                            setShowNumberPicker(false);
+                            setShowTemplates(false);
+                            setShowSymbols(false);
+                            setShowHashtags(false);
+                        }}
                     />
-                    <div className="mt-2 text-sm text-gray-500">
-                        {input.length} characters
+
+                    {/* Post Analytics (UNIQUE!) */}
+                    <div className="mt-3 p-3 bg-gradient-to-r from-gray-50 to-blue-50 rounded-lg border border-gray-200">
+                        <div className="flex flex-wrap gap-4 text-sm">
+                            <div className="flex items-center gap-1">
+                                <span className="text-gray-500">📝</span>
+                                <span className="font-medium">{wordCount}</span>
+                                <span className="text-gray-500">words</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <span className={`font-medium ${isOverLimit ? 'text-red-600' : 'text-gray-700'}`}>{charCount}</span>
+                                <span className="text-gray-500">/ {LINKEDIN_MAX_CHARS}</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <span className="text-gray-500">⏱️</span>
+                                <span className="font-medium">{readingTime}</span>
+                                <span className="text-gray-500">min read</span>
+                            </div>
+                            {charCount > LINKEDIN_MOBILE_CUTOFF && (
+                                <div className={`flex items-center gap-1 px-2 py-0.5 rounded ${hasGoodHook ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                                    <span>{hasGoodHook ? '✅' : '⚠️'}</span>
+                                    <span className="text-xs">{hasGoodHook ? 'Strong hook!' : 'Add a hook (?, !, or numbers)'}</span>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* "See More" Preview Line (UNIQUE!) */}
+                        {charCount > LINKEDIN_MOBILE_CUTOFF && (
+                            <div className="mt-3 pt-3 border-t border-gray-200">
+                                <div className="text-xs text-gray-500 mb-1 flex items-center gap-1">
+                                    <span>📱</span> Mobile users see first {LINKEDIN_MOBILE_CUTOFF} chars before "...see more"
+                                </div>
+                                <div className="p-2 bg-white rounded border-l-4 border-blue-400 text-sm">
+                                    <span className="text-gray-700">{hookText}</span>
+                                    <span className="text-blue-500 font-medium">...see more</span>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="mt-3 flex items-center justify-end">
+                        <button
+                            onClick={handleCopyMain}
+                            className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${copied === 'main'
+                                ? 'bg-green-500 text-white'
+                                : 'bg-blue-600 text-white hover:bg-blue-700'
+                                }`}
+                        >
+                            {copied === 'main' ? '✓ Copied!' : 'Copy Text'}
+                        </button>
                     </div>
                 </div>
 
                 {/* LinkedIn Preview */}
-                <div className="bg-white rounded-lg shadow-md p-3 sm:p-4">
+                <div className="bg-white rounded-lg shadow-md p-3 sm:p-4 flex flex-col">
                     <div className="flex items-center justify-between mb-3">
                         <div className="text-sm font-semibold text-gray-700">
                             Post Preview
@@ -135,21 +919,25 @@ export default function LinkedInTextFormatter() {
                             </button>
                         </div>
                     </div>
-                    <div className={`bg-[#f3f2ef] rounded-lg p-2 sm:p-4 min-h-64 sm:min-h-80 ${viewMode === 'mobile' ? 'max-w-sm mx-auto' : ''}`}>
+                    <div className={`bg-[#f3f2ef] rounded-lg p-2 sm:p-4 flex-1 min-h-[280px] ${viewMode === 'mobile' ? 'max-w-sm mx-auto' : ''}`}>
                         <div className="bg-white rounded-lg shadow-sm border border-gray-300 overflow-hidden">
                             {/* Post Header */}
                             <div className="p-2 sm:p-3">
                                 <div className="flex items-start gap-2">
-                                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center flex-shrink-0">
-                                        <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                        </svg>
+                                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden flex-shrink-0">
+                                        <Image
+                                            src="/logo.jpg"
+                                            alt="FormatMint"
+                                            width={48}
+                                            height={48}
+                                            className="w-full h-full object-cover"
+                                        />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <div className="font-semibold text-xs sm:text-sm text-gray-900">Your Name</div>
-                                        <div className="text-xs text-gray-600 truncate">Your headline</div>
+                                        <div className="font-semibold text-xs sm:text-sm text-gray-900">FormatMint</div>
+                                        <div className="text-xs text-gray-600 truncate">Fast, clean and free online tools for developers</div>
                                         <div className="text-xs text-gray-500 flex items-center gap-1">
-                                            <span>12h</span>
+                                            <span>Just now</span>
                                             <span>•</span>
                                             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 16 16">
                                                 <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zM4.5 7.5a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7z" />
@@ -242,8 +1030,8 @@ export default function LinkedInTextFormatter() {
                                     <button
                                         onClick={() => handleCopy(transformed, key)}
                                         className={`px-3 sm:px-4 py-1.5 text-sm font-medium rounded-md transition-colors ${copied === key
-                                                ? 'bg-green-500 text-white'
-                                                : 'bg-blue-600 text-white hover:bg-blue-700'
+                                            ? 'bg-green-500 text-white'
+                                            : 'bg-blue-600 text-white hover:bg-blue-700'
                                             }`}
                                         aria-label={`Copy ${style.name} formatted text`}
                                     >
