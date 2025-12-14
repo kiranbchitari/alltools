@@ -827,7 +827,7 @@ export default function LinkedInTextFormatter() {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Type something amazing... Select text and use the toolbar above to format it!"
-                        className="w-full flex-1 min-h-[280px] p-4 border-2 border-gray-300 rounded-b-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-base border-t-0"
+                        className="w-full flex-1 min-h-[280px] p-4 border-2 border-gray-300 rounded-b-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-base text-gray-900 bg-white placeholder:text-gray-500 border-t-0"
                         onClick={() => {
                             setShowEmojiPicker(false);
                             setShowBulletPicker(false);
