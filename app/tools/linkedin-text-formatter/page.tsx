@@ -954,7 +954,7 @@ export default function LinkedInTextFormatter() {
 
                             {/* Post Content */}
                             <div className="px-2 sm:px-3 pb-2 sm:pb-3">
-                                <div className="text-xs sm:text-sm text-gray-900 whitespace-pre-wrap break-words leading-relaxed min-h-[80px] sm:min-h-[120px]">
+                                <div className={`text-sm whitespace-pre-wrap break-words leading-relaxed min-h-[80px] sm:min-h-[120px] ${input ? 'text-gray-900' : 'text-gray-500 italic'}`}>
                                     {displayText}
                                 </div>
                             </div>
