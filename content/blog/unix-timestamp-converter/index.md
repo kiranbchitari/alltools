@@ -1,7 +1,7 @@
 ---
 title: "Unix Timestamp Converter: Complete Guide to Epoch Time"
 description: "Convert 10-digit or 13-digit Unix timestamps to readable dates instantly. Handle timezone conversions and debug API date errors."
-date: "2024-11-20"
+date: "2026-11-20"
 thumbnail: "./images/timestamp-converter-guide-v2.png"
 keywords: ["unix timestamp", "epoch time", "timestamp converter", "date converter", "epoch converter", "javascript date"]
 relatedTools: ["timestamp-converter", "json-formatter", "csv-json-converter"]

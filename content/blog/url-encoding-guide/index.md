@@ -1,7 +1,7 @@
 ---
 title: "URL Encoding Explained: Why and How to Encode URLs"
 description: "Fix broken links and API errors instantly. Learn why special characters break URLs and how to encode/decode them safely."
-date: "2024-11-23"
+date: "2026-11-23"
 thumbnail: "./images/url-encoding-guide-v2.png"
 keywords: ["url encoder", "url decoder", "percent encoding", "url encoding", "query string", "api debugging"]
 relatedTools: ["url-encoder", "base64-encoder", "slug-generator"]

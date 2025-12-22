@@ -1,7 +1,7 @@
 ---
 title: "The Ultimate Word Counter and Text Tools Guide"
 description: "Count words, characters, and sentences instantly. Check text limits for Twitter, LinkedIn, and SEO meta descriptions in real-time."
-date: "2024-11-24"
+date: "2026-11-24"
 thumbnail: "./images/word-tools-guide-v2.png"
 keywords: ["word counter", "character count", "text tools", "case converter", "text manipulation", "twitter character limit"]
 relatedTools: ["word-tools", "diff-checker", "slug-generator"]

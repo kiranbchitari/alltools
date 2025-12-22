@@ -86,7 +86,7 @@ These make your posts visually distinct without being obnoxious.
 
 ### 4. One-Click Hashtags
 
-Six categories of popular LinkedIn hashtags (Career, Tech, Business, Marketing, Productivity, Personal). Click to insert. No more googling "best LinkedIn hashtags 2024."
+Six categories of popular LinkedIn hashtags (Career, Tech, Business, Marketing, Productivity, Personal). Click to insert. No more googling "best LinkedIn hashtags 2026."
 
 ![Popular Hashtags by Category](./images/hashtags.png)
 

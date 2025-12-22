@@ -1,7 +1,7 @@
 ---
 title: "HTML Meta Tags: The Complete SEO Guide"
 description: "Generate perfect meta tags for SEO, Open Graph, and Twitter Cards. Boost your click-through rates with rich social previews."
-date: "2024-11-16"
+date: "2026-11-16"
 thumbnail: "./images/meta-tags-guide-v2.png"
 keywords: ["meta tag generator", "seo meta tags", "open graph", "twitter cards", "html meta", "seo optimization"]
 relatedTools: ["meta-tag-generator", "slug-generator", "html-editor"]

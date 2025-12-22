@@ -1,7 +1,7 @@
 ---
 title: "How to Build and Test HTML Code Online: The Complete Guide"
 description: "Write, edit, and test HTML, CSS, and JavaScript in real-time. A lightweight, no-login playground for web developers to prototype and debug code instantly."
-date: "2024-11-25"
+date: "2026-11-25"
 thumbnail: "./images/html-editor-guide-v2.png"
 keywords: ["html editor", "online code editor", "html css javascript", "live preview", "web development", "prototype code"]
 relatedTools: ["html-editor", "markdown-preview", "json-formatter"]

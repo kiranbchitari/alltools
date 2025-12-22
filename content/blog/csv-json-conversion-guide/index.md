@@ -1,7 +1,7 @@
 ---
 title: "CSV to JSON Conversion: The Complete Guide"
 description: "Convert messy CSV files to clean JSON arrays instantly. Handle nested objects, numbers, and booleans correctly for your API or database."
-date: "2024-11-19"
+date: "2026-11-19"
 thumbnail: "./images/csv-json-guide-v2.png"
 keywords: ["csv to json", "json to csv", "data conversion", "csv converter", "json converter", "excel to json"]
 relatedTools: ["csv-json-converter", "json-formatter", "timestamp-converter"]

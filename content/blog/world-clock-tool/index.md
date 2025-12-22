@@ -1,7 +1,7 @@
 ---
 title: "Free World Clock Tool: Track Multiple Time Zones for Remote Teams"
 description: "Struggling to schedule meetings across time zones? Our free World Clock tool lets you compare IST, EST, PST and 20+ time zones instantly. Find the best meeting time for your global team."
-date: "2024-12-22"
+date: "2026-12-22"
 thumbnail: "images/main-view.png"
 keywords: ["world clock", "time zone converter", "meeting planner", "remote work", "global teams"]
 relatedTools: ["timestamp-converter"]
