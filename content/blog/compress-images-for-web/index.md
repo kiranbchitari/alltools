@@ -3,7 +3,7 @@ title: "How to Compress Images for Web (Without Losing Quality)"
 description: "Slow websites kill conversions. Learn how to reduce image file sizes by up to 80% while keeping them looking sharp using our free Image Compressor."
 keywords: ["image compressor", "optimize images", "web performance", "reduce png size", "compress jpeg"]
 date: "2025-12-02"
-thumbnail: "./images/cover.png"
+thumbnail: "images/thumbnail.png"
 relatedTools: ["image-compressor", "image-resizer"]
 ---
 

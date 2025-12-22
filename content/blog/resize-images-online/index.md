@@ -2,7 +2,7 @@
 title: "How to Resize Images Online: Dimensions, Quality & Best Practices"
 description: "Resize images for Instagram, Twitter, and Open Graph tags perfectly. Change dimensions without losing quality."
 date: "2026-11-14"
-thumbnail: "./images/image-resizer-guide-v2.png"
+thumbnail: "images/thumbnail.png"
 keywords: ["image resizer", "resize image online", "image dimensions", "scale image", "resize photo", "social media image sizes"]
 relatedTools: ["image-resizer", "image-compressor", "image-to-pdf", "image-base64"]
 ---

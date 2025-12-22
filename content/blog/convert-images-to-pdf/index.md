@@ -2,7 +2,7 @@
 title: "How to Convert Images to PDF: Complete Guide"
 description: "Combine receipts, screenshots, or photos into a single professional PDF document. Secure, local conversion in your browser."
 date: "2026-11-15"
-thumbnail: "./images/image-to-pdf-guide-v2.png"
+thumbnail: "images/thumbnail.png"
 keywords: ["image to pdf", "convert images to pdf", "jpg to pdf", "png to pdf", "pdf converter", "merge photos to pdf"]
 relatedTools: ["image-to-pdf", "image-compressor", "image-resizer"]
 ---

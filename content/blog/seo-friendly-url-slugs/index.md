@@ -2,7 +2,7 @@
 title: "How to Create SEO-Friendly URL Slugs"
 description: "Turn messy titles into clean, SEO-friendly URLs. Our slug generator handles special characters, accents, and hyphens automatically."
 date: "2026-11-21"
-thumbnail: "./images/slug-generator-guide-v2.png"
+thumbnail: "images/thumbnail.png"
 keywords: ["slug generator", "url slug", "seo friendly urls", "permalink", "url optimization", "clean urls"]
 relatedTools: ["slug-generator", "url-encoder", "meta-tag-generator", "word-tools"]
 ---

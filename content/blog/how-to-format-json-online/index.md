@@ -3,7 +3,7 @@ title: "How to Format JSON Online: A Complete Guide"
 description: "Learn how to format, validate, and minify JSON data instantly using our free online JSON Formatter tool. Perfect for developers debugging API responses."
 keywords: ["json formatter", "json validator", "json minify", "debug json", "web development"]
 date: "2025-11-28"
-thumbnail: "./images/cover-v2.webp"
+thumbnail: "images/thumbnail.png"
 relatedTools: ["json-formatter", "html-editor"]
 ---
 

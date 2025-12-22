@@ -2,7 +2,7 @@
 title: "Base64 Encoding: What It Is and How to Use It"
 description: "Decode those mysterious strings ending in '='. Learn how Base64 makes binary data safe for email, URLs, and APIs."
 date: "2026-11-22"
-thumbnail: "./images/base64-encoding-guide-v2.png"
+thumbnail: "images/thumbnail.png"
 keywords: ["base64 encoder", "base64 decoder", "base64 converter", "encode base64", "decode base64", "jwt decoder"]
 relatedTools: ["base64-encoder", "url-encoder", "image-base64"]
 ---

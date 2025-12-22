@@ -3,7 +3,7 @@ title: "Create Custom QR Codes for Free (No Sign-Up)"
 description: "Generate scannable QR codes for URLs, Wi-Fi, text, and more. Customize colors, add logos, and download high-quality images for print or web."
 keywords: ["qr code generator", "free qr code", "custom qr code", "wifi qr code", "marketing tools"]
 date: "2025-12-04"
-thumbnail: "./images/cover.png"
+thumbnail: "images/thumbnail.png"
 relatedTools: ["qr-code-generator", "url-encoder"]
 ---
 

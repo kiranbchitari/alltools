@@ -3,7 +3,7 @@ title: "How to Rewrite Text Professionally Using AI"
 description: "Transform your writing instantly with AI. Learn how to improve clarity, fix grammar, and change the tone of your text using our free AI Text Enhancer."
 keywords: ["ai text rewriter", "grammar checker", "improve writing", "paraphrasing tool", "ai writing assistant"]
 date: "2025-11-29"
-thumbnail: "./images/cover-v2.webp"
+thumbnail: "images/thumbnail.png"
 relatedTools: ["ai-text-enhancer", "word-tools"]
 ---
 

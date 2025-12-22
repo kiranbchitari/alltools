@@ -2,7 +2,7 @@
 title: "Convert Images to Base64: Embedding Images in Code"
 description: "Embed images directly in HTML/CSS to reduce HTTP requests. Convert PNG, JPG, or SVG to Base64 strings instantly."
 date: "2026-11-17"
-thumbnail: "./images/image-base64-guide-v2.png"
+thumbnail: "images/thumbnail.png"
 keywords: ["image to base64", "base64 image", "data uri", "embed images", "image encoder", "css background image"]
 relatedTools: ["image-base64", "base64-encoder", "qr-code-generator", "image-compressor"]
 ---

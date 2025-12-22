@@ -3,7 +3,7 @@ title: "Stop Writing Regex by Hand (It's 2025)"
 description: "Why struggle with cryptic regex syntax? Learn how to generate complex regular expressions instantly using plain English and AI."
 keywords: ["ai regex generator", "regex builder", "regular expression tool", "regex for email", "developer tools"]
 date: "2025-12-01"
-thumbnail: "./images/cover.png"
+thumbnail: "images/thumbnail.png"
 relatedTools: ["ai-regex-generator", "ai-text-enhancer"]
 ---
 

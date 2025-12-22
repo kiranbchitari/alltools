@@ -3,7 +3,7 @@ title: "Compare Text and Code Differences Online"
 description: "Spot the difference instantly. Compare two text files, code snippets, or documents side-by-side to find added, removed, or modified lines."
 keywords: ["diff checker", "compare text", "code diff", "find differences", "text comparison tool"]
 date: "2025-12-03"
-thumbnail: "./images/cover.png"
+thumbnail: "images/thumbnail.png"
 relatedTools: ["diff-checker", "ai-text-enhancer"]
 ---
 

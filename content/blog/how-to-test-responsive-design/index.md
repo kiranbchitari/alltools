@@ -3,7 +3,7 @@ title: "How to Test Responsive Design Online (Step-by-Step Guide)"
 description: "Learn how to preview websites on mobile, tablet, laptop, and 4K screens using our free responsive checker tool. Ensure your site looks great on every device."
 keywords: ["responsive design", "mobile preview", "viewport tester", "responsive checker", "web development"]
 date: "2025-11-27"
-thumbnail: "./images/cover-v2.webp"
+thumbnail: "images/thumbnail.png"
 relatedTools: ["responsive-checker", "html-editor"]
 ---
 

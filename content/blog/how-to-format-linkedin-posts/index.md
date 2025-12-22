@@ -3,7 +3,7 @@ title: "How to Bold Text on LinkedIn (The Easy Way)"
 description: "LinkedIn doesn't support formatting, but you can use Unicode to add bold, italic, and script text to your posts. Here's how."
 keywords: ["linkedin bold text", "linkedin text formatter", "linkedin italic", "format linkedin posts", "unicode text"]
 date: "2025-12-05"
-thumbnail: "./images/cover.png"
+thumbnail: "images/thumbnail.png"
 relatedTools: ["linkedin-text-formatter", "word-tools"]
 ---
 

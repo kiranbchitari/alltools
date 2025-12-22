@@ -2,7 +2,7 @@
 title: "Markdown Preview: Write and Preview Markdown in Real-Time"
 description: "Stop guessing how your README will look. Preview GitHub Flavored Markdown instantly with syntax highlighting, tables, and image support."
 date: "2026-11-18"
-thumbnail: "./images/markdown-preview-guide-v2.png"
+thumbnail: "images/thumbnail.png"
 keywords: ["markdown preview", "markdown editor", "github markdown", "md editor", "markdown viewer", "readme generator"]
 relatedTools: ["markdown-preview", "html-editor", "diff-checker"]
 ---
