@@ -2,14 +2,14 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer className="mt-12 sm:mt-16 py-6 sm:py-8 border-t border-gray-200 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <footer className="mt-12 sm:mt-16 py-6 sm:py-8 border-t border-slate-200 bg-white">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                     <div className="text-center md:text-left">
-                        <p className="text-gray-600 text-sm">
-                            <strong className="text-gray-900">FormatMint</strong> - Free online tools for developers
+                        <p className="text-slate-600 text-sm">
+                            <strong className="text-slate-900">FormatMint</strong> - Free online tools for developers
                         </p>
-                        <p className="text-gray-500 text-xs mt-1">
+                        <p className="text-slate-500 text-xs mt-1">
                             Fast, clean, and privacy-friendly. All tools run in your browser.
                         </p>
                     </div>
@@ -17,7 +17,7 @@ export default function Footer() {
                     <div className="flex gap-4 sm:gap-6 text-sm">
                         <Link
                             href="/"
-                            className="text-gray-600 hover:text-blue-600 transition-colors"
+                            className="text-slate-600 hover:text-teal-600 transition-colors"
                             aria-label="Home"
                         >
                             Home
@@ -26,7 +26,7 @@ export default function Footer() {
                             href="https://github.com/kiranbchitari/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-600 hover:text-blue-600 transition-colors inline-flex items-center gap-1"
+                            className="text-slate-600 hover:text-teal-600 transition-colors inline-flex items-center gap-1"
                             aria-label="View on GitHub"
                         >
                             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -37,17 +37,17 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-gray-100">
-                    <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
-                        <Link href="/about" className="hover:text-blue-600 transition-colors">About</Link>
-                        <Link href="/contact" className="hover:text-blue-600 transition-colors">Contact</Link>
-                        <Link href="/privacy-policy" className="hover:text-blue-600 transition-colors">Privacy Policy</Link>
-                        <Link href="/terms" className="hover:text-blue-600 transition-colors">Terms</Link>
-                        <Link href="/disclaimer" className="hover:text-blue-600 transition-colors">Disclaimer</Link>
-                        <Link href="/cookie-policy" className="hover:text-blue-600 transition-colors">Cookie Policy</Link>
-                        <Link href="/faq" className="hover:text-blue-600 transition-colors">FAQ</Link>
+                <div className="mt-8 pt-8 border-t border-slate-100">
+                    <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-500">
+                        <Link href="/about" className="hover:text-teal-600 transition-colors">About</Link>
+                        <Link href="/contact" className="hover:text-teal-600 transition-colors">Contact</Link>
+                        <Link href="/privacy-policy" className="hover:text-teal-600 transition-colors">Privacy Policy</Link>
+                        <Link href="/terms" className="hover:text-teal-600 transition-colors">Terms</Link>
+                        <Link href="/disclaimer" className="hover:text-teal-600 transition-colors">Disclaimer</Link>
+                        <Link href="/cookie-policy" className="hover:text-teal-600 transition-colors">Cookie Policy</Link>
+                        <Link href="/faq" className="hover:text-teal-600 transition-colors">FAQ</Link>
                     </div>
-                    <div className="mt-4 text-center text-xs text-gray-400">
+                    <div className="mt-4 text-center text-xs text-slate-400">
                         © {new Date().getFullYear()} FormatMint. No registration required • No data collection
                     </div>
                 </div>

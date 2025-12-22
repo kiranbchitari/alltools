@@ -13,20 +13,20 @@ export default function RelatedTools({ currentToolKey }: RelatedToolsProps) {
     }
 
     return (
-        <div className="mt-12 pt-8 border-t border-gray-200">
+        <div className="mt-12 pt-8 border-t border-slate-200">
             <nav aria-label="Related tools">
-                <h2 className="text-xl font-semibold text-gray-900 mb-4">Related Tools</h2>
+                <h2 className="text-xl font-semibold text-slate-900 mb-4">Related Tools</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     {relatedTools.map((tool) => (
                         <Link
                             key={tool.key}
                             href={tool.path}
-                            className="p-4 bg-white border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all group"
+                            className="p-4 bg-white border border-slate-200/60 rounded-xl hover:border-teal-300 hover:shadow-md transition-all group"
                         >
-                            <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
+                            <h3 className="font-semibold text-slate-900 group-hover:text-teal-600 transition-colors mb-1">
                                 {tool.title}
                             </h3>
-                            <p className="text-sm text-gray-600 line-clamp-2">
+                            <p className="text-sm text-slate-500 line-clamp-2">
                                 {tool.description}
                             </p>
                         </Link>
@@ -35,7 +35,7 @@ export default function RelatedTools({ currentToolKey }: RelatedToolsProps) {
                 <div className="flex justify-center">
                     <Link
                         href="/"
-                        className="text-blue-600 hover:text-blue-800 font-medium hover:underline"
+                        className="text-teal-600 hover:text-teal-700 font-medium hover:underline"
                     >
                         View all developer tools →
                     </Link>

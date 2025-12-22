@@ -8,6 +8,7 @@ import rehypeSlug from 'rehype-slug';
 import { getPostBySlug, getAllPosts } from '@/lib/blog';
 import { generatePageMetadata } from '@/lib/metadata';
 import toolsConfig from '@/config/tools.json';
+import Header from '@/app/components/Header';
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -73,24 +74,25 @@ export default async function BlogPost({ params }: Props) {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 py-12">
+        <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+            <Header />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
 
-            <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {/* Header */}
                 <header className="mb-10 text-center">
                     <div className="mb-6">
-                        <Link href="/blog" className="text-blue-600 hover:text-blue-800 font-medium">
+                        <Link href="/blog" className="text-teal-600 hover:text-teal-700 font-medium">
                             ← Back to Blog
                         </Link>
                     </div>
-                    <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-4">
+                    <h1 className="text-4xl font-extrabold text-slate-900 sm:text-5xl mb-4">
                         {post.title}
                     </h1>
-                    <div className="text-gray-500">
+                    <div className="text-slate-500">
                         <time dateTime={post.date}>
                             {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                         </time>
@@ -132,7 +134,7 @@ export default async function BlogPost({ params }: Props) {
                                 );
                             },
                             a: ({ node, ...props }) => (
-                                <a {...props} className="text-blue-600 hover:text-blue-800 underline break-words" />
+                                <a {...props} className="text-teal-600 hover:text-teal-700 underline break-words" />
                             ),
                             code: ({ node, ...props }) => (
                                 <code {...props} className="break-words whitespace-pre-wrap" />
@@ -158,10 +160,10 @@ export default async function BlogPost({ params }: Props) {
                                     <Link
                                         key={toolKey}
                                         href={tool.path}
-                                        className="block p-6 border border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-md transition-all"
+                                        className="block p-6 border border-slate-200/60 rounded-xl hover:border-teal-300 hover:shadow-md transition-all"
                                     >
-                                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{tool.title}</h3>
-                                        <p className="text-gray-600 text-sm">{tool.description}</p>
+                                        <h3 className="text-lg font-semibold text-slate-900 mb-2">{tool.title}</h3>
+                                        <p className="text-slate-500 text-sm">{tool.description}</p>
                                     </Link>
                                 );
                             })}
@@ -186,7 +188,7 @@ export default async function BlogPost({ params }: Props) {
                                             />
                                         </div>
                                         <div className="p-4">
-                                            <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 line-clamp-2">
+                                            <h3 className="font-semibold text-slate-900 group-hover:text-teal-600 line-clamp-2">
                                                 {p.title}
                                             </h3>
                                             <p className="text-sm text-gray-500 mt-2">
