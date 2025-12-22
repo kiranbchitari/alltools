@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ToolLayout from '@/app/components/ToolLayout';
 import Button from '@/app/components/Button';
@@ -223,7 +223,8 @@ function parseClocksFromUrl(searchParams: URLSearchParams): Clock[] | null {
 // MAIN COMPONENT
 // ============================================================================
 
-export default function WorldClockPage() {
+// Inner component that uses useSearchParams
+function WorldClockContent() {
     const tool = getTool('world-clock');
     const searchParams = useSearchParams();
 
@@ -1114,5 +1115,18 @@ export default function WorldClockPage() {
                 </ul>
             </div>
         </ToolLayout >
+    );
+}
+
+// Exported component with Suspense boundary for useSearchParams
+export default function WorldClockPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            </div>
+        }>
+            <WorldClockContent />
+        </Suspense>
     );
 }
