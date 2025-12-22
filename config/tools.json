@@ -394,5 +394,25 @@
       "word-tools",
       "ai-text-enhancer"
     ]
+  },
+  "world-clock": {
+    "enabled": true,
+    "title": "World Clock & Time Zone Converter",
+    "description": "Track multiple time zones with live updating clocks. DST-safe conversions, working hours overlap, and customizable clock labels.",
+    "path": "/tools/world-clock",
+    "icon": "clock",
+    "keywords": [
+      "world clock",
+      "time zone converter",
+      "timezone",
+      "dst",
+      "time difference",
+      "international time",
+      "meeting scheduler"
+    ],
+    "example": "",
+    "related": [
+      "timestamp-converter"
+    ]
   }
 }
